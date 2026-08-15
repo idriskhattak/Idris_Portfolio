@@ -1,6 +1,14 @@
 const menuBtn = document.querySelector('.menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
+window.addEventListener("load", () => {
+  const isFirstOpen = performance.getEntriesByType("navigation")[0]?.type === "navigate";
+
+  if (isFirstOpen && !window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+});
+
 menuBtn.addEventListener('click', () => {
   const open = navLinks.classList.toggle('open');
   menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
