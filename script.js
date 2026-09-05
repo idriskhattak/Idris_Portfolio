@@ -1,24 +1,51 @@
 const menuBtn = document.querySelector('.menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
-// Start from the top only on the first visit of the current browser session.
-// Refreshing or using back/forward navigation can still preserve scroll position.
-window.addEventListener('DOMContentLoaded', () => {
-  const hasVisitedThisSession = sessionStorage.getItem('portfolioVisited');
+const navigationEntry = performance.getEntriesByType('navigation')[0];
+const navigationType = navigationEntry ? navigationEntry.type : 'navigate';
 
-  if (!hasVisitedThisSession && !window.location.hash) {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'auto'
+// Only force the top on a fresh visit.
+// Refresh and back/forward navigation keep their normal scroll behavior.
+if (navigationType === 'navigate' && !window.location.hash) {
+
+  // Temporarily stop the browser restoring an old scroll position
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // Force top immediately
+  window.scrollTo(0, 0);
+
+  // Force top again after the page has rendered
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
     });
 
-    sessionStorage.setItem('portfolioVisited', 'true');
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+
+      // Return normal browser scroll restoration
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'auto';
+      }
+    }, 100);
+  });
+
+} else {
+
+  // Refresh / back / forward should behave normally
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'auto';
   }
-});
+}
+
 
 // Mobile navigation menu
 if (menuBtn && navLinks) {
+
   menuBtn.addEventListener('click', () => {
     const open = navLinks.classList.toggle('open');
 
@@ -28,14 +55,22 @@ if (menuBtn && navLinks) {
     );
   });
 
+
   // Close mobile menu after clicking a navigation link
   document.querySelectorAll('.nav-links a').forEach(link => {
+
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
+
+      menuBtn.setAttribute(
+        'aria-expanded',
+        'false'
+      );
     });
+
   });
 }
+
 
 // Automatically update footer year
 const yearElement = document.getElementById('year');
