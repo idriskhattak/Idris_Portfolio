@@ -13,6 +13,59 @@
     rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
+<!-- Floating Chat Button -->
+<button id="chat-toggle" class="chat-toggle" aria-label="Open Idris AI chatbot">
+  AI
+</button>
+
+<!-- Chat Window -->
+<div id="chat-window" class="chat-window">
+
+  <div class="chat-header">
+    <div>
+      <strong>Idris AI</strong>
+      <span>Ask about Idris</span>
+    </div>
+
+    <button id="chat-close" class="chat-close" aria-label="Close chat">
+      ×
+    </button>
+  </div>
+
+  <div id="chat-messages" class="chat-messages">
+
+    <div class="message bot-message">
+      Hi! I'm Idris's AI portfolio assistant.
+      Ask me about his skills, projects, education, certifications, or background.
+    </div>
+
+  </div>
+
+  <div class="chat-suggestions">
+    <button class="suggestion-btn">
+      What projects has Idris done?
+    </button>
+
+    <button class="suggestion-btn">
+      What are Idris's skills?
+    </button>
+
+    <button class="suggestion-btn">
+      What is Idris studying?
+    </button>
+  </div>
+
+  <form id="chat-form" class="chat-input-area">
+
+    <input id="chat-input" type="text" placeholder="Ask something about Idris..." autocomplete="off" required />
+
+    <button type="submit" class="chat-send">
+      Send
+    </button>
+
+  </form>
+
+</div>
 
 <body>
   <header class="nav-wrap">
