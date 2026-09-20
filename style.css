@@ -206,6 +206,20 @@ h3 {
   transform-origin: left;
 }
 
+.nav-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-external span {
+  transition: transform 0.2s ease;
+}
+
+.nav-external:hover span {
+  transform: translate(2px, -2px);
+}
+
 .nav-cta {
   padding: 10px 15px;
   border: 1px solid var(--ink);
