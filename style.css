@@ -31,10 +31,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body.chat-open {
-  overflow: hidden;
-}
-
 ::selection {
   background: var(--sun);
   color: var(--ink);
