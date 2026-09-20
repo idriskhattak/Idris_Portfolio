@@ -153,22 +153,62 @@
           </div>
         </article>
 
-        <div class="project-list">
-          <article class="project-row">
-            <p class="project-index">02</p>
-            <div class="project-title">
-              <p>Final-year project · 2024</p>
-              <h3>Counting people in video, then estimating who they are</h3>
-            </div>
-            <p class="project-summary">
-              YOLOv8n tracks people across frames and counts them as they cross a defined line; DeepFace then
-              estimates demographic attributes per detection. Counting held up well. The attribute step did not—the
-              underlying models carry known bias, and I would not put that part near a real decision.
+        <article class="case-study case-study-dark">
+          <div class="case-copy">
+            <p class="case-meta"><span>Final-year project</span> · 2024</p>
+            <h3>Counting people in video, then deciding not to ship half of it.</h3>
+            <p class="case-lead">
+              The brief was to count people crossing a line in a video feed and estimate demographic attributes for
+              each one. YOLOv8n handles detection, Ultralytics' tracker keeps an identity across frames, and a
+              line-crossing region tallies entries and exits. That part works.
             </p>
-            <a class="project-status project-link" href="https://github.com/idriskhattak/Human-Counting-and-Ethnicity"
-              target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a>
-          </article>
+            <p class="case-lead">
+              The second half was DeepFace classifying race from each detected face, and I would not deploy it. The
+              model returns a confident label for every face regardless of lighting, angle or whether the person
+              belongs to any group it was trained on, and the error is not evenly distributed. I kept it in the
+              submission because it was the assignment, and I wrote up why it should not be used.
+            </p>
 
+            <dl class="case-details">
+              <div>
+                <dt>Detection</dt>
+                <dd>YOLOv8n, pretrained COCO weights</dd>
+              </div>
+              <div>
+                <dt>Tracking</dt>
+                <dd>Persistent IDs across frames, drawn trails</dd>
+              </div>
+              <div>
+                <dt>Counting</dt>
+                <dd>Polygon region with separate in and out tallies</dd>
+              </div>
+              <div>
+                <dt>What I would change</dt>
+                <dd>Drop the attribute stage; add a hand-labelled clip to measure count accuracy</dd>
+              </div>
+            </dl>
+
+            <div class="case-actions">
+              <a class="btn btn-light" href="https://github.com/idriskhattak/Human-Counting-and-Ethnicity"
+                target="_blank" rel="noopener noreferrer">Read the code <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <div class="system-map">
+            <div class="map-heading">
+              <span>Pipeline</span>
+            </div>
+            <dl class="spec-list">
+              <div><dt>Model</dt><dd>YOLOv8n (nano)</dd></div>
+              <div><dt>Input</dt><dd>1080-wide video file, offline</dd></div>
+              <div><dt>Region</dt><dd>Four-point band across the frame</dd></div>
+              <div><dt>Attributes</dt><dd>DeepFace, race only</dd></div>
+              <div><dt>Evaluation</dt><dd>None — the honest answer</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <div class="project-list">
           <article class="project-row">
             <p class="project-index">03</p>
             <div class="project-title">

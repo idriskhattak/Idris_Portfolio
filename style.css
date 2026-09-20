@@ -500,12 +500,34 @@ h3 {
 
 .case-study {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
   gap: clamp(50px, 7vw, 90px);
   padding: clamp(38px, 6vw, 74px);
   border-radius: 30px;
   background: var(--forest);
   color: var(--paper-light);
+}
+
+.case-study + .case-study {
+  margin-top: 28px;
+}
+
+/* Second featured card: same structure, darker surface, so the section reads
+   as two cases rather than one case repeated. */
+
+.case-study-dark {
+  background: var(--ink);
+}
+
+.case-study-dark .case-meta span,
+.case-study-dark .case-details dt,
+.case-study-dark .spec-list dt {
+  color: var(--sun);
+}
+
+.case-study-dark .system-map {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .case-meta {
@@ -518,13 +540,13 @@ h3 {
 }
 
 .case-copy h3 {
-  max-width: 650px;
+  max-width: 20ch;
   margin-bottom: 24px;
   font-size: clamp(1.9rem, 3vw, 2.6rem);
 }
 
 .case-lead {
-  max-width: 650px;
+  max-width: 68ch;
   color: rgba(255, 255, 255, 0.76);
   font-size: 1.08rem;
 }
@@ -585,10 +607,7 @@ h3 {
 }
 
 .spec-list > div {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-  gap: 16px;
-  padding: 16px 0;
+  padding: 14px 0;
   border-bottom: 1px solid var(--light-line);
   font-size: 0.92rem;
 }
@@ -599,7 +618,12 @@ h3 {
 }
 
 .spec-list dt {
+  margin-bottom: 2px;
   color: #a9d8c7;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .spec-list dd {
@@ -1485,11 +1509,6 @@ footer {
   .project-in-progress {
     margin-inline: -10px;
     padding-inline: 10px;
-  }
-
-  .spec-list > div {
-    grid-template-columns: 1fr;
-    gap: 4px;
   }
 
   .colophon {
