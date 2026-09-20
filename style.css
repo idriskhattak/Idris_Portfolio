@@ -751,11 +751,20 @@ h3 {
   max-width: 560px;
 }
 
+.portrait {
+  display: block;
+  width: min(220px, 60%);
+  height: auto;
+  margin-top: 34px;
+  border-radius: 6px;
+  filter: grayscale(0.15);
+}
+
 .story-lead {
   font-family: "Newsreader", Georgia, serif;
-  font-size: clamp(1.8rem, 3.2vw, 2.65rem);
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.35;
+  letter-spacing: -0.012em;
 }
 
 .about-story > p:not(.story-lead) {
@@ -1499,7 +1508,7 @@ footer {
   }
 
   .story-lead {
-    font-size: 1.65rem;
+    font-size: 1.2rem;
   }
 
   .personal-facts > div {
