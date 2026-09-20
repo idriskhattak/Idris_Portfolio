@@ -76,7 +76,7 @@ function openChat(trigger) {
   chatWindow.removeAttribute("inert");
   chatWindow.classList.add("active");
   chatToggle.setAttribute("aria-expanded", "true");
-  chatToggle.setAttribute("aria-label", "Close Idris's AI guide");
+  chatToggle.setAttribute("aria-label", "Ask Idris AI — close portfolio guide");
 
   window.setTimeout(() => chatInput.focus(), 180);
 }
@@ -86,7 +86,7 @@ function closeChat({ restoreFocus = true } = {}) {
 
   chatWindow.classList.remove("active");
   chatToggle.setAttribute("aria-expanded", "false");
-  chatToggle.setAttribute("aria-label", "Open Idris's AI guide");
+  chatToggle.setAttribute("aria-label", "Ask Idris AI — open portfolio guide");
 
   inertTimer = window.setTimeout(() => chatWindow.setAttribute("inert", ""), 200);
 

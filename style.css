@@ -6,7 +6,7 @@
   --ink-soft: #4f5852;
   --forest: #215f4c;
   --forest-dark: #174638;
-  --clay: #c9603f;
+  --clay: #a7442e;
   --sun: #e9b949;
   --line: rgba(25, 32, 28, 0.2);
   --light-line: rgba(255, 255, 255, 0.2);
@@ -518,7 +518,7 @@ h3 {
 
 .case-meta {
   margin-bottom: 24px;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .case-meta span {
@@ -1010,7 +1010,7 @@ h3 {
 
 .contact-layout > div:last-child > p {
   max-width: 540px;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.06rem;
 }
 
