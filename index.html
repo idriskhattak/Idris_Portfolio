@@ -133,11 +133,10 @@
             </dl>
 
             <div class="case-actions">
-              <a class="btn btn-light" href="https://github.com/idriskhattak/AWKUM-ChatBot" target="_blank"
-                rel="noopener noreferrer">Read the notebook <span aria-hidden="true">↗</span></a>
-              <a class="text-link light-link"
-                href="https://github.com/idriskhattak/AWKUM-ChatBot/blob/main/awkum_dataset_updated.json"
-                target="_blank" rel="noopener noreferrer">See the dataset <span aria-hidden="true">↗</span></a>
+              <a class="btn btn-light" href="projects/awkum-assistant/">Read the case study
+                <span aria-hidden="true">→</span></a>
+              <a class="text-link light-link" href="https://github.com/idriskhattak/AWKUM-ChatBot" target="_blank"
+                rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a>
             </div>
           </div>
 
@@ -155,107 +154,59 @@
           </div>
         </article>
 
-        <article class="case-study case-study-dark">
-          <div class="case-copy">
-            <p class="case-meta"><span>Final-year project</span> · 2024</p>
-            <h3>Counting people in video, then deciding not to ship half of it.</h3>
-            <p class="case-lead">
-              The brief was to count people crossing a line in a video feed and estimate demographic attributes for
-              each one. YOLOv8n handles detection, Ultralytics' tracker keeps an identity across frames, and a
-              line-crossing region tallies entries and exits. That part works.
-            </p>
-            <p class="case-lead">
-              The second half was DeepFace classifying race from each detected face, and I would not deploy it. The
-              model returns a confident label for every face regardless of lighting, angle or whether the person
-              belongs to any group it was trained on, and the error is not evenly distributed. I kept it in the
-              submission because it was the assignment, and I wrote up why it should not be used.
-            </p>
-
-            <dl class="case-details">
-              <div>
-                <dt>Detection</dt>
-                <dd>YOLOv8n, pretrained COCO weights</dd>
-              </div>
-              <div>
-                <dt>Tracking</dt>
-                <dd>Persistent IDs across frames, drawn trails</dd>
-              </div>
-              <div>
-                <dt>Counting</dt>
-                <dd>Polygon region with separate in and out tallies</dd>
-              </div>
-              <div>
-                <dt>What I would change</dt>
-                <dd>Drop the attribute stage; add a hand-labelled clip to measure count accuracy</dd>
-              </div>
-            </dl>
-
-            <div class="case-actions">
-              <a class="btn btn-light" href="https://github.com/idriskhattak/Human-Counting-and-Ethnicity"
-                target="_blank" rel="noopener noreferrer">Read the code <span aria-hidden="true">↗</span></a>
+        <ol class="work-index">
+          <li class="work-item">
+            <p class="work-year">2024</p>
+            <div class="work-body">
+              <h3><a href="projects/people-counting/">Counting people in video, then deciding not to ship half
+                  of it</a></h3>
+              <p>YOLOv8 tracking with line-crossing counts. The second half of the brief was a race classifier, and
+                I wrote up why it should not be deployed.</p>
             </div>
-          </div>
+            <p class="work-stack">YOLOv8 · OpenCV · DeepFace</p>
+            <p class="work-status"><a class="work-link" href="projects/people-counting/">Case study <span
+                  aria-hidden="true">→</span></a></p>
+          </li>
 
-          <div class="system-map">
-            <div class="map-heading">
-              <span>Pipeline</span>
+          <li class="work-item">
+            <p class="work-year">2024</p>
+            <div class="work-body">
+              <h3>Full fingerprint reconstruction</h3>
+              <p>Reconstructing a complete fingerprint from a partial image, with most of the effort going into
+                preprocessing.
+                <!-- TODO(Idris): replace with the real one-liner — architecture, dataset + size,
+                     and the metric you measured (SSIM? PSNR?). Then add a page under
+                     projects/fingerprint-reconstruction/ and link the title. -->
+              </p>
             </div>
-            <dl class="spec-list">
-              <div><dt>Model</dt><dd>YOLOv8n (nano)</dd></div>
-              <div><dt>Input</dt><dd>1080-wide video file, offline</dd></div>
-              <div><dt>Region</dt><dd>Four-point band across the frame</dd></div>
-              <div><dt>Attributes</dt><dd>DeepFace, race only</dd></div>
-              <div><dt>Evaluation</dt><dd>None — the honest answer</dd></div>
-            </dl>
-          </div>
-        </article>
+            <p class="work-stack">PyTorch · OpenCV</p>
+            <p class="work-status">Write-up pending</p>
+          </li>
 
-        <div class="project-list">
-          <article class="project-row">
-            <p class="project-index">03</p>
-            <div class="project-title">
-              <p>Generative vision study</p>
-              <h3>Full Fingerprint Reconstruction</h3>
+          <li class="work-item">
+            <p class="work-year">2023</p>
+            <div class="work-body">
+              <h3>Hand gesture recognition</h3>
+              <p>A real-time recognition pipeline, including the data collection nobody puts in the demo video.
+                <!-- TODO(Idris): replace with the real one-liner — how many gesture classes, how
+                     many samples, accuracy, FPS. Then add a page and link the title. -->
+              </p>
             </div>
-            <p class="project-summary">
-              Explored how a deep-learning model could reconstruct a complete fingerprint from a partial image, with a
-              focus on image preparation and visual evaluation.
-              <!-- TODO(Idris): replace with real figures — architecture, dataset + size,
-                   train/test split, and the metric you actually measured (SSIM? PSNR?). -->
-              <em class="todo-note">Numbers and write-up to add.</em>
-            </p>
-            <p class="project-status">Not yet public</p>
-          </article>
+            <p class="work-stack">OpenCV · MediaPipe</p>
+            <p class="work-status">Write-up pending</p>
+          </li>
 
-          <article class="project-row">
-            <p class="project-index">04</p>
-            <div class="project-title">
-              <p>Real-time computer vision</p>
-              <h3>Hand Gesture Recognition</h3>
-            </div>
-            <p class="project-summary">
-              A recognition pipeline built on OpenCV and MediaPipe, covering the less-visible work of collecting,
-              preparing and evaluating visual data.
-              <!-- TODO(Idris): replace with real figures — how many gesture classes, how many
-                   samples you recorded, accuracy, and frames per second on your machine. -->
-              <em class="todo-note">Numbers and repository to add.</em>
-            </p>
-            <p class="project-status">Not yet public</p>
-          </article>
-
-          <article class="project-row project-in-progress">
-            <p class="project-index">05</p>
-            <div class="project-title">
-              <p>Currently on the desk</p>
+          <li class="work-item work-item-active">
+            <p class="work-year">Now</p>
+            <div class="work-body">
               <h3>Retrieval over real documents</h3>
+              <p>Rebuilding the university assistant the way it should have been done: retrieval over source
+                documents instead of a fine-tune, with an evaluation set I can measure against.</p>
             </div>
-            <p class="project-summary">
-              Rebuilding the university assistant the way it should have been done: retrieval over source documents
-              instead of a fine-tune, with an evaluation set I can actually measure against.
-            </p>
-            <p class="project-status"><span></span> In progress</p>
-          </article>
-        </div>
+            <p class="work-stack">Retrieval · evaluation</p>
+            <p class="work-status"><span class="work-dot"></span> In progress</p>
+          </li>
+        </ol>
 
         <aside class="colophon" aria-labelledby="colophon-title">
           <div>

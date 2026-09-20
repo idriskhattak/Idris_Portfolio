@@ -291,7 +291,6 @@ h3 {
 .eyebrow,
 .section-kicker,
 .case-meta,
-.project-title > p,
 .timeline-label {
   margin-bottom: 22px;
   font-size: 0.76rem;
@@ -645,98 +644,98 @@ h3 {
   font-weight: 600;
 }
 
-.project-list {
-  margin-top: 72px;
+/* Work index: one row per project. Grows without redesign — the featured card
+   above carries the hierarchy, these carry the count. */
+
+.work-index {
+  padding: 0;
+  margin: 56px 0 0;
   border-bottom: 1px solid var(--line);
+  list-style: none;
+  counter-reset: work;
 }
 
-.project-row {
+.work-item {
   display: grid;
-  grid-template-columns: 55px minmax(230px, 0.9fr) minmax(300px, 1.2fr) 150px;
-  gap: 28px;
-  align-items: start;
-  padding: 34px 0;
+  grid-template-columns: 74px minmax(0, 1.55fr) minmax(0, 0.7fr) 150px;
+  gap: 32px;
+  align-items: baseline;
+  padding: 30px 0;
   border-top: 1px solid var(--line);
 }
 
-.project-index,
-.project-status {
+.work-year,
+.work-stack,
+.work-status {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
+}
+
+.work-year {
   font-weight: 700;
 }
 
-.project-title > p {
-  margin-bottom: 10px;
-  color: var(--clay);
-  font-size: 0.65rem;
+.work-body h3 {
+  margin-bottom: 7px;
+  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
 }
 
-.project-title h3 {
-  margin-bottom: 0;
-  font-size: clamp(1.55rem, 2.5vw, 2.2rem);
-  line-height: 1.1;
+.work-body h3 a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  transition: background-size 0.25s ease;
 }
 
-.project-summary {
+.work-body h3 a:hover {
+  background-size: 100% 1px;
+}
+
+.work-body p {
+  max-width: 54ch;
   margin-bottom: 0;
   color: var(--ink-soft);
-  font-size: 0.93rem;
+  font-size: 0.92rem;
 }
 
-.project-status {
+.work-status {
   justify-self: end;
-  padding: 6px 10px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  text-align: center;
+  text-align: right;
 }
 
-.project-link {
+.work-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border-color: var(--ink);
   color: var(--ink);
-  transition: background 0.2s ease, color 0.2s ease;
+  font-weight: 700;
 }
 
-.project-link:hover {
-  background: var(--ink);
-  color: var(--paper-light);
-}
-
-.project-link span {
+.work-link span {
   transition: transform 0.2s ease;
 }
 
-.project-link:hover span {
-  transform: translate(2px, -2px);
+.work-link:hover span {
+  transform: translateX(3px);
 }
 
-.todo-note {
-  display: block;
-  margin-top: 6px;
-  color: var(--clay);
-  font-style: italic;
-}
-
-.project-in-progress {
+.work-item-active {
   margin-inline: -20px;
   padding-inline: 20px;
   background: rgba(233, 185, 73, 0.12);
 }
 
-.project-in-progress .project-status {
+.work-item-active .work-status {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border-color: rgba(33, 95, 76, 0.3);
   color: var(--forest);
+  font-weight: 700;
 }
 
-.project-in-progress .project-status span {
+.work-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -1398,15 +1397,14 @@ footer {
     width: 100%;
   }
 
-  .project-row {
-    grid-template-columns: 40px 1fr 1fr;
+  .work-item {
+    grid-template-columns: 62px minmax(0, 1fr) 130px;
+    gap: 10px 22px;
   }
 
-  .project-status {
+  .work-stack {
     grid-column: 2;
-    justify-self: start;
   }
-
   .toolkit {
     margin-top: 70px;
   }
@@ -1499,31 +1497,26 @@ footer {
     padding: 22px;
   }
 
-  .project-list {
-    margin-top: 50px;
+  .work-index {
+    margin-top: 44px;
   }
 
-  .project-row {
-    grid-template-columns: 32px 1fr;
-    gap: 12px 14px;
-    padding: 28px 0;
+  .work-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 26px 0;
   }
 
-  .project-title,
-  .project-summary,
-  .project-status {
-    grid-column: 2;
-  }
-
-  .project-status {
+  .work-status {
     justify-self: start;
-    margin-top: 4px;
+    text-align: left;
   }
 
-  .project-in-progress {
+  .work-item-active {
     margin-inline: -10px;
     padding-inline: 10px;
   }
+
 
   .colophon {
     grid-template-columns: 1fr;
