@@ -2,541 +2,406 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Idris Khattak - Data Scientist and AI Engineer." />
-  <title>Idris Khattak | AI Engineer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Idris Khattak is an Applied AI master's student in Oslo building practical machine-learning systems across data, APIs and thoughtful interfaces.">
+  <meta name="theme-color" content="#f2efe6">
+  <meta property="og:title" content="Idris Khattak — Applied AI Master's Student">
+  <meta property="og:description"
+    content="Practical AI work, an honest learning journey, and selected projects from Idris Khattak.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://idriskhattak.github.io/Idris_Portfolio/">
+  <link rel="canonical" href="https://idriskhattak.github.io/Idris_Portfolio/">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2319201c'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Arial' font-weight='700' fill='%23f2efe6'%3EIK%3C/text%3E%3C/svg%3E">
+  <title>Idris Khattak — Applied AI Master's Student</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
-<!-- Floating Chat Button -->
-<button id="chat-toggle" class="chat-toggle" aria-label="Open Idris AI chatbot">
-  AI
-</button>
-
-<!-- Chat Window -->
-<div id="chat-window" class="chat-window">
-
-  <div class="chat-header">
-    <div>
-      <strong>Idris AI</strong>
-      <span>Ask about Idris</span>
-    </div>
-
-    <button id="chat-close" class="chat-close" aria-label="Close chat">
-      ×
-    </button>
-  </div>
-
-  <div id="chat-messages" class="chat-messages">
-
-    <div class="message bot-message">
-      Hi! I'm Idris's AI portfolio assistant.
-      Ask me about his skills, projects, education, certifications, or background.
-    </div>
-
-  </div>
-
-  <div class="chat-suggestions">
-    <button class="suggestion-btn">
-      What projects has Idris done?
-    </button>
-
-    <button class="suggestion-btn">
-      What are Idris's skills?
-    </button>
-
-    <button class="suggestion-btn">
-      What is Idris studying?
-    </button>
-  </div>
-
-  <form id="chat-form" class="chat-input-area">
-
-    <input id="chat-input" type="text" placeholder="Ask something about Idris..." autocomplete="off" required />
-
-    <button type="submit" class="chat-send">
-      Send
-    </button>
-
-  </form>
-
-</div>
 
 <body>
-  <header class="nav-wrap">
-    <nav class="container nav">
-      <a class="brand" href="#home">IK<span>.</span></a>
-      <button class="menu-btn" aria-label="Open navigation" aria-expanded="false">☰</button>
-      <div class="nav-links">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary navigation">
+      <a class="brand" href="#home" aria-label="Idris Khattak, home">
+        <span class="brand-mark">IK</span>
+        <span class="brand-name">Idris Khattak</span>
+      </a>
+
+      <button class="menu-btn" type="button" aria-label="Open navigation" aria-controls="primary-links"
+        aria-expanded="false">
+        <span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="primary-links">
+        <a href="#work">Work</a>
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#certificates">Certificates</a>
-        <a class="nav-cta" href="#contact">Contact</a>
+        <a href="#journey">Journey</a>
+        <a href="#credentials">Credentials</a>
+        <a class="nav-cta" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">AI Engineer</div>
-          <h1>Hi, I'm <span>Idris Khattak</span>.<br>I build intelligent systems.</h1>
+      <div class="container hero-layout">
+        <div class="hero-main">
+          <p class="eyebrow"><span></span> Applied AI master's student · Oslo</p>
+          <h1>Learning deeply.<br><em>Building for real.</em></h1>
           <p class="hero-copy">
-            I work across the full lifecycle of AI product development — from data and model building
-            to deployment, monitoring, and continuous optimization.
+            I'm Idris. I build practical AI experiences across data, models, APIs and interfaces—and I am learning how
+            to make them useful and reliable in the real world.
           </p>
           <div class="hero-actions">
-            <a class="btn primary" href="#projects">View Projects</a>
-            <a class="btn ghost" href="https://github.com/idriskhattak" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn btn-dark" href="#work">See what I'm building <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#about">A little about me <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="quick-links">
-            <a href="mailto:idriskhan999999@gmail.com">idriskhan999999@gmail.com</a>
-            <span>•</span>
-            <a href="https://www.linkedin.com/in/idris-khan-khattak/" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
+          <p class="availability"><span></span> Open to internship conversations</p>
         </div>
 
-        <div class="hero-card">
-          <div class="orb orb-a"></div>
-          <div class="orb orb-b"></div>
-          <div class="code-card">
-            <div class="dots"><i></i><i></i><i></i></div>
-            <pre><code><span class="muted"># current_focus.py</span>
-
-profile = {
-  <span class="key">"name"</span>: <span class="str">"Idris Khattak"</span>,
-  <span class="key">"role"</span>: <span class="str">"AI Engineer"</span>,
-  <span class="key">"focus"</span>: [
-    <span class="str">"Machine Learning"</span>,
-    <span class="str">"Computer Vision"</span>,
-    <span class="str">"Generative AI"</span>,
-    <span class="str">"AWS SageMaker"</span>
-  ]
-}</code></pre>
-          </div>
-        </div>
+        <aside class="now-card" aria-label="Current focus">
+          <p class="handwritten">Right now</p>
+          <h2>Building the bridge between a model and the people who use it.</h2>
+          <ul>
+            <li><span>Studying</span>Applied AI at OsloMet</li>
+            <li><span>Exploring</span>ML systems, computer vision and RAG</li>
+            <li><span>Growing</span>Deployment and MLOps practice</li>
+          </ul>
+          <a href="https://github.com/idriskhattak" target="_blank" rel="noopener noreferrer">
+            Follow the work on GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </aside>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="container two-col">
-        <div>
-          <div class="section-label">ABOUT</div>
-          <h2>Turning AI ideas into practical solutions.</h2>
-        </div>
-        <div class="about-copy">
-          <p>
-            I focus on building scalable, reliable, end-to-end AI solutions. My background includes
-            machine learning, deep learning, computer vision, LLMs, generative AI, data analysis,
-            and cloud-based ML workflows.
-          </p>
-          <p>
-            My experience spans data collection and preprocessing, experimentation, model evaluation,
-            computer vision pipelines, and cloud-oriented product development with a particular focus
-            on AWS SageMaker.
-          </p>
-          <div class="stats">
-            <div><strong>15+</strong><span>AI Projects</span></div>
-            <div><strong>1</strong><span>AWS-sponsored Nanodegrees</span></div>
-            <div><strong>11</strong><span>Professional Certificates</span></div>
-          </div>
-        </div>
+    <div class="marquee" aria-hidden="true">
+      <div>
+        <span>Data science</span><i></i><span>Applied AI</span><i></i><span>Computer vision</span><i></i>
+        <span>Machine learning</span><i></i><span>Reliable systems</span><i></i><span>Always learning</span>
       </div>
-    </section>
+    </div>
 
-    <section id="skills" class="section alt">
+    <section class="section work-section" id="work">
       <div class="container">
-        <div class="section-label">SKILLS</div>
-        <h2>Tools and areas I work with.</h2>
-        <div class="skill-grid">
-          <div class="skill-card"><span>01</span>
-            <h3>Machine Learning</h3>
-            <p>Model development, preprocessing, feature engineering, evaluation and experimentation.</p>
+        <header class="section-heading">
+          <p class="section-kicker">01 / Selected work</p>
+          <div>
+            <h2>A few things I've built—and what each one taught me.</h2>
+            <p>I would rather explain a few projects clearly than overwhelm you with a wall of technologies.</p>
           </div>
-          <div class="skill-card"><span>02</span>
-            <h3>Deep Learning</h3>
-            <p>ANNs, CNNs, RNNs and PyTorch-based model development.</p>
-          </div>
-          <div class="skill-card"><span>03</span>
-            <h3>Computer Vision</h3>
-            <p>OpenCV, MediaPipe, YOLOv8 and visual recognition pipelines.</p>
-          </div>
-          <div class="skill-card"><span>04</span>
-            <h3>Generative AI & LLMs</h3>
-            <p>LLAMA 2 fine-tuning and generative model development.</p>
-          </div>
-          <div class="skill-card"><span>05</span>
-            <h3>Cloud & MLOps</h3>
-            <p>AWS SageMaker, Azure Cloud, Git and GitHub workflows.</p>
-          </div>
-          <div class="skill-card"><span>06</span>
-            <h3>Data Analysis</h3>
-            <p>Pandas, NumPy, Matplotlib, Seaborn and exploratory data analysis.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        </header>
 
-    <section id="projects" class="section">
-      <div class="container">
-        <div class="section-label">SELECTED PROJECTS</div>
-        <h2>Projects that represent my AI work.</h2>
-        <div class="projects-grid">
-          <article class="project featured">
-            <div class="project-top">
-              <span class="project-num">01</span>
-              <span class="tag">Generative AI</span>
-            </div>
-            <h3>Full Fingerprint Reconstruction</h3>
-            <p>Developed a generative AI model to reconstruct full fingerprints from partial inputs using deep learning
-              techniques.</p>
-            <div class="chips"><span>Deep Learning</span><span>Generative AI</span><span>Image Reconstruction</span>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="project-top">
-              <span class="project-num">02</span>
-              <span class="tag">Computer Vision</span>
-            </div>
-            <h3>Hand Gesture Recognition</h3>
-            <p>Built a machine learning pipeline for hand gesture recognition using OpenCV and MediaPipe, including data
-              collection, preprocessing and evaluation.</p>
-            <div class="chips"><span>OpenCV</span><span>MediaPipe</span><span>ML</span></div>
-          </article>
-
-          <article class="project">
-            <div class="project-top">
-              <span class="project-num">03</span>
-              <span class="tag">LLM</span>
-            </div>
-            <h3>AWKUM University Chatbot</h3>
-            <p>Trained and fine-tuned the LLAMA 2 model on a custom dataset to develop an AI-powered university chatbot.
+        <article class="case-study portfolio-study">
+          <div class="case-copy">
+            <p class="case-meta"><span>Live project</span> · Built in 2026</p>
+            <h3>This portfolio has an AI guide inside.</h3>
+            <p class="case-lead">
+              Instead of making every visitor search through a long page, I built an assistant that answers questions
+              about my background and work using information grounded in this portfolio.
             </p>
-            <div class="chips"><span>LLAMA 2</span><span>Fine-tuning</span><span>Chatbot</span></div>
+
+            <dl class="case-details">
+              <div>
+                <dt>Built across</dt>
+                <dd>Frontend, backend API and retrieval-augmented generation</dd>
+              </div>
+              <div>
+                <dt>Why it matters</dt>
+                <dd>It is my working laboratory for end-to-end AI product development</dd>
+              </div>
+            </dl>
+
+            <div class="case-actions">
+              <button class="btn btn-light" type="button" data-open-chat>Try the AI guide</button>
+              <a class="text-link light-link" href="https://github.com/idriskhattak/Idris_Portfolio" target="_blank"
+                rel="noopener noreferrer">View source <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <div class="system-map" role="img" aria-label="Portfolio assistant flow">
+            <div class="map-heading">
+              <span>How a question travels</span>
+              <span class="live-indicator"><i></i> Live</span>
+            </div>
+            <ol>
+              <li><span>01</span><strong>You ask</strong><small>A question about Idris</small></li>
+              <li><span>02</span><strong>It retrieves</strong><small>Relevant portfolio context</small></li>
+              <li><span>03</span><strong>AI reasons</strong><small>With grounded information</small></li>
+              <li><span>04</span><strong>You receive</strong><small>A focused answer</small></li>
+            </ol>
+          </div>
+        </article>
+
+        <div class="project-list">
+          <article class="project-row">
+            <p class="project-index">02</p>
+            <div class="project-title">
+              <p>Generative vision study</p>
+              <h3>Full Fingerprint Reconstruction</h3>
+            </div>
+            <p class="project-summary">
+              Explored how a deep-learning model could reconstruct a complete fingerprint from a partial image, with a
+              focus on image preparation and visual evaluation.
+            </p>
+            <p class="project-status">Case study coming soon</p>
           </article>
 
-          <article class="project">
-            <div class="project-top">
-              <span class="project-num">04</span>
-              <span class="tag">FYP</span>
+          <article class="project-row">
+            <p class="project-index">03</p>
+            <div class="project-title">
+              <p>Domain-adapted language model</p>
+              <h3>AWKUM University Assistant</h3>
             </div>
-            <h3>Human Counting & Ethnicity Detection</h3>
-            <p>Created a computer vision system for counting people in crowded spaces with YOLOv8 and performing
-              ethnicity classification with DeepFace.</p>
-            <div class="chips"><span>YOLOv8</span><span>DeepFace</span><span>Computer Vision</span></div>
+            <p class="project-summary">
+              Fine-tuned Llama 2 on a custom university dataset to explore how a language model can answer questions
+              within a focused knowledge domain.
+            </p>
+            <p class="project-status">Repository link next</p>
+          </article>
+
+          <article class="project-row">
+            <p class="project-index">04</p>
+            <div class="project-title">
+              <p>Real-time computer vision</p>
+              <h3>Hand Gesture Recognition</h3>
+            </div>
+            <p class="project-summary">
+              Built a recognition pipeline with OpenCV and MediaPipe, covering the less-visible work of collecting,
+              preparing and evaluating visual data.
+            </p>
+            <p class="project-status">Repository link next</p>
+          </article>
+
+          <article class="project-row project-in-progress">
+            <p class="project-index">05</p>
+            <div class="project-title">
+              <p>Currently on the desk</p>
+              <h3>A new flagship project</h3>
+            </div>
+            <p class="project-summary">
+              An end-to-end AI build is in progress. I will share the problem, engineering decisions and results when
+              it is ready—not before.
+            </p>
+            <p class="project-status"><span></span> In progress</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="education" class="section alt">
+    <section class="section about-section" id="about">
+      <div class="container about-layout">
+        <div class="about-heading">
+          <p class="section-kicker">02 / About</p>
+          <h2>Still early in the journey. Serious about the craft.</h2>
+        </div>
+
+        <div class="about-story">
+          <p class="story-lead">
+            I am at the beginning of my master's in Applied AI at OsloMet. My goal is not simply to train models; I
+            want to understand how data, software and deployment decisions come together in something people can use.
+          </p>
+          <p>
+            My background began with machine learning and computer vision. It has gradually expanded into generative
+            AI, cloud workflows and MLOps. I learn best by building, documenting what did not work and improving the
+            next version.
+          </p>
+
+          <div class="personal-facts">
+            <div><span>Based in</span><strong>Oslo, Norway</strong></div>
+            <div><span>Languages</span><strong>English, Urdu &amp; learning Norwegian</strong></div>
+            <div><span>Looking for</span><strong>AI, ML and data internships</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container practice-grid">
+        <article>
+          <p>01</p>
+          <h3>Data &amp; modelling</h3>
+          <span>Python, Pandas, NumPy, scikit-learn and PyTorch</span>
+        </article>
+        <article>
+          <p>02</p>
+          <h3>Applied AI</h3>
+          <span>Computer vision, LLMs, RAG and generative models</span>
+        </article>
+        <article>
+          <p>03</p>
+          <h3>Systems in progress</h3>
+          <span>APIs, AWS SageMaker, Azure and Git-based workflows</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section journey-section" id="journey">
       <div class="container">
-        <div class="section-label">EDUCATION</div>
-        <h2>Academic and specialized training.</h2>
+        <header class="section-heading compact-heading">
+          <p class="section-kicker">03 / Journey</p>
+          <div>
+            <h2>Learning with direction.</h2>
+            <p>The path so far, and the foundation I am building on.</p>
+          </div>
+        </header>
 
         <div class="timeline">
-
-          <div class="timeline-item">
-            <div class="time">08/2026 — Present</div>
+          <article class="timeline-item current">
+            <p class="time">Aug 2026 — now</p>
             <div>
+              <p class="timeline-label">Current chapter</p>
               <h3>Master's in Applied Artificial Intelligence</h3>
-              <p class="institution">Oslo Metropolitan University (OsloMet)</p>
-              <p>
-                Currently pursuing a Master's degree in Applied Artificial Intelligence,
-                with studies starting on 7 August 2026. The program focuses on advanced
-                AI methods, machine learning, intelligent systems, and practical
-                applications of artificial intelligence.
-              </p>
+              <p class="institution">Oslo Metropolitan University · Oslo</p>
+              <p>I am beginning advanced study in machine learning, intelligent systems and practical AI while
+                developing a stronger engineering and research foundation.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="timeline-item">
-            <div class="time">10/2020 — 07/2024</div>
+          <article class="timeline-item">
+            <p class="time">2020 — 2024</p>
             <div>
               <h3>BS Artificial Intelligence</h3>
-              <p class="institution">Hazara University Mansehra • CGPA 3.06</p>
-              <p>
-                Final year project: Human Counting and Ethnicity Detection using
-                YOLOv8 and DeepFace.
-              </p>
+              <p class="institution">Hazara University Mansehra · CGPA 3.06</p>
+              <p>Built a broad foundation in AI and completed an applied computer-vision final-year project.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="timeline-item">
-            <div class="time">06/2023 — 09/2023</div>
-
+          <article class="timeline-item">
+            <p class="time">Jun — Sep 2023</p>
             <div>
               <h3>AI Programming with Python Nanodegree</h3>
-
-              <p class="institution">
-                Udacity • Sponsored by AWS
-              </p>
-
-              <p>
-                Awarded through the AWS-sponsored scholarship program. Covered Python
-                programming for AI, Pandas, NumPy, Matplotlib, PyTorch, essential
-                mathematics, neural networks, and end-to-end machine learning
-                development.
-              </p>
-
-              <a href="https://www.udacity.com/certificate/e/198af81c-0ae8-11ee-92e1-a3681b4dad0d" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
+              <p class="institution">Udacity · AWS-sponsored scholarship</p>
+              <p>Strengthened my practical foundation in Python, PyTorch, mathematics and end-to-end machine learning.</p>
+              <a class="inline-link"
+                href="https://www.udacity.com/certificate/e/198af81c-0ae8-11ee-92e1-a3681b4dad0d" target="_blank"
+                rel="noopener noreferrer">View credential <span aria-hidden="true">↗</span></a>
             </div>
-          </div>
-
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="certificates" class="section">
-      <div class="container">
-        <div class="section-label">CERTIFICATES</div>
-        <h2>Continuous learning.</h2>
-
-        <div class="cert-list">
-
-          <div>
-            <span>JAN 2024</span>
-            <h3>PyTorch for Deep Learning with Python Bootcamp</h3>
-            <div>
-              <p>
-                Udemy • PyTorch, Artificial Neural Networks, deep learning,
-                CNNs, RNNs and practical neural network projects.
-              </p>
-              <a href="https://www.udemy.com/certificate/UC-584929fb-89f8-472e-8597-bba077d340ff/" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <span>SEP 2023</span>
-            <h3>Applied Data Science Capstone</h3>
-            <div>
-              <p>
-                Coursera • Applied data science, predictive modeling,
-                data analysis and end-to-end data science project development.
-              </p>
-
-              <a href="https://www.coursera.org/account/accomplishments/certificate/TFCLS6XB8DZ2" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <span>SEP 2023</span>
-            <h3>Databases and SQL for Data Science with Python</h3>
-            <div>
-              <p>
-                Coursera • SQL, MySQL, relational databases, querying,
-                data manipulation and working with databases using Python.
-              </p>
-              <a href="https://www.coursera.org/account/accomplishments/certificate/UQ4JTR83AEEM" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <span>SEP 2023</span>
-
-            <h3>Python Project for Data Science</h3>
-
-            <div>
-              <p>
-                Coursera • Python, artificial intelligence, data collection,
-                data processing and practical data science project development.
-              </p>
-
-              <a href="https://www.coursera.org/account/accomplishments/certificate/DCYZ3H4XNVC3" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <span>AUG 2023</span>
-
-            <h3>Machine Learning with Python (with Honors)</h3>
-
-            <div>
-              <p>
-                Coursera • Classification, machine learning algorithms,
-                SciPy, preprocessing, model evaluation and scikit-learn.
-              </p>
-
-              <a href="https://www.coursera.org/account/accomplishments/certificate/NRNN2FCM6RCL" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <span>JUN 2023</span>
-            <h3>Python for Data Science, AI &amp; Development</h3>
-            <div>
-              <p>
-                Coursera • Python programming, data structures, functions,
-                Pandas, NumPy and Python applications for AI and data science.
-              </p>
-              <a href="https://www.coursera.org/account/accomplishments/certificate/V4DH9672T2NB" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <span>MAY 2023</span>
-            <h3>Data Science Methodology</h3>
-            <div>
-              <p>
-                Coursera • Data science methodology, analytical approaches,
-                data requirements, modeling, evaluation and deployment.
-              </p>
-
-              <a href="https://www.coursera.org/account/accomplishments/certificate/7TZD9VA5CNCG" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <span>APR 2023</span>
-            <h3>Tools for Data Science</h3>
-            <div>
-              <p>
-                Coursera • Jupyter Notebook, GitHub, development environments
-                and essential tools used throughout the data science workflow.
-              </p>
-              <a href="https://www.coursera.org/account/accomplishments/certificate/PPBZVX47F62Z" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <span>APR 2023</span>
-            <h3>Data Visualization with Python</h3>
-            <div>
-              <p>
-                Coursera • Data visualization, Matplotlib, Seaborn,
-                visual storytelling and communicating insights through data.
-              </p>
-              <a href="https://www.coursera.org/account/accomplishments/certificate/QBKRSLL3RXHK" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <span>APR 2023</span>
-
-            <h3>What is Data Science?</h3>
-
-            <div>
-              <p>
-                Coursera • Foundations of data science, data mining,
-                industry applications and the role of a data scientist.
-              </p>
-
-              <a href="https://www.coursera.org/account/accomplishments/certificate/TZXQXXBAV7PK" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <span>APR 2023</span>
-            <h3>Data Analysis with Python</h3>
-            <div>
-              <p>
-                Coursera • Statistical analysis, machine learning,
-                data preprocessing, exploratory analysis and visualization.
-              </p>
-              <a href="https://coursera.org/share/29fc4d14b7c4c7aeb98fac269d1fe8c6" target="_blank"
-                rel="noopener noreferrer" class="credential-link">
-                View Credential ↗
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt">
-      <div class="container languages">
+    <section class="section credentials-section" id="credentials">
+      <div class="container credentials-layout">
         <div>
-          <div class="section-label">LANGUAGES</div>
-          <h2>Communication.</h2>
+          <p class="section-kicker">04 / Credentials</p>
+          <h2>Selected learning, not the whole story.</h2>
+          <p class="credentials-intro">Certificates support the work. They are not a substitute for it.</p>
         </div>
-        <div class="language-grid">
-          <div><strong>English</strong><span>Professional Working Proficiency</span></div>
-          <div>
-            <strong>Norsk</strong>
-            <span>A1 • Basic proficiency, currently learning</span>
-          </div>
-          <div><strong>Urdu</strong><span>Full Professional Proficiency</span></div>
-        </div>
-      </div>
-    </section>
 
-    <section id="contact" class="contact-section">
-      <div class="container contact-box">
-        <div>
-          <div class="section-label">CONTACT</div>
-          <h2>Let's build something intelligent.</h2>
-          <p>I'm open to AI, Machine Learning, Data Science and Computer Vision opportunities.</p>
-        </div>
-        <div class="contact-actions">
-          <a class="btn primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=idriskhan999999@gmail.com"
+        <div class="credential-stack">
+          <a class="credential" href="https://www.udemy.com/certificate/UC-584929fb-89f8-472e-8597-bba077d340ff/"
             target="_blank" rel="noopener noreferrer">
-            Send Email
+            <span>2024</span>
+            <div><strong>PyTorch for Deep Learning</strong><small>Udemy</small></div>
+            <i aria-hidden="true">↗</i>
           </a>
-
-          <a class="btn ghost light" href="https://www.linkedin.com/in/idris-khan-khattak/" target="_blank"
+          <a class="credential"
+            href="https://www.coursera.org/account/accomplishments/certificate/NRNN2FCM6RCL" target="_blank"
             rel="noopener noreferrer">
-            LinkedIn
+            <span>2023</span>
+            <div><strong>Machine Learning with Python · Honors</strong><small>Coursera</small></div>
+            <i aria-hidden="true">↗</i>
+          </a>
+          <a class="credential"
+            href="https://www.coursera.org/account/accomplishments/certificate/TFCLS6XB8DZ2" target="_blank"
+            rel="noopener noreferrer">
+            <span>2023</span>
+            <div><strong>Applied Data Science Capstone</strong><small>Coursera</small></div>
+            <i aria-hidden="true">↗</i>
           </a>
 
-          <a class="btn ghost light" href="https://github.com/idriskhattak" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
+          <details class="more-credentials">
+            <summary>View eight more credentials <span aria-hidden="true">+</span></summary>
+            <div class="credential-links">
+              <a href="https://www.coursera.org/account/accomplishments/certificate/UQ4JTR83AEEM" target="_blank"
+                rel="noopener noreferrer">Databases and SQL for Data Science <span>↗</span></a>
+              <a href="https://www.coursera.org/account/accomplishments/certificate/DCYZ3H4XNVC3" target="_blank"
+                rel="noopener noreferrer">Python Project for Data Science <span>↗</span></a>
+              <a href="https://www.coursera.org/account/accomplishments/certificate/V4DH9672T2NB" target="_blank"
+                rel="noopener noreferrer">Python for Data Science, AI &amp; Development <span>↗</span></a>
+              <a href="https://www.coursera.org/account/accomplishments/certificate/7TZD9VA5CNCG" target="_blank"
+                rel="noopener noreferrer">Data Science Methodology <span>↗</span></a>
+              <a href="https://www.coursera.org/account/accomplishments/certificate/PPBZVX47F62Z" target="_blank"
+                rel="noopener noreferrer">Tools for Data Science <span>↗</span></a>
+              <a href="https://www.coursera.org/account/accomplishments/certificate/QBKRSLL3RXHK" target="_blank"
+                rel="noopener noreferrer">Data Visualization with Python <span>↗</span></a>
+              <a href="https://www.coursera.org/account/accomplishments/certificate/TZXQXXBAV7PK" target="_blank"
+                rel="noopener noreferrer">What is Data Science? <span>↗</span></a>
+              <a href="https://coursera.org/share/29fc4d14b7c4c7aeb98fac269d1fe8c6" target="_blank"
+                rel="noopener noreferrer">Data Analysis with Python <span>↗</span></a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container contact-layout">
+        <div>
+          <p class="section-kicker">05 / Contact</p>
+          <h2>Have a problem worth learning from?</h2>
+        </div>
+        <div>
+          <p>I am interested in internship opportunities and conversations about practical AI, machine learning and
+            the engineering around them.</p>
+          <div class="contact-actions">
+            <a class="btn btn-light" href="mailto:idriskhan999999@gmail.com">Send me an email</a>
+            <a class="text-link light-link" href="https://www.linkedin.com/in/idris-khan-khattak/" target="_blank"
+              rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer">
+    <div class="container footer-layout">
       <p>© <span id="year"></span> Idris Khattak</p>
-      <p>Oslo, Norway • +47 455 75 988</p>
+      <p>Applied AI · Oslo, Norway</p>
+      <a href="#home">Back to top ↑</a>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <button id="chat-toggle" class="chat-toggle" type="button" aria-label="Open Idris's AI guide"
+    aria-controls="chat-window" aria-expanded="false">
+    <span class="chat-spark" aria-hidden="true">✦</span>
+    <span>Ask Idris AI</span>
+  </button>
+
+  <section id="chat-window" class="chat-window" role="dialog" aria-modal="true" aria-labelledby="chat-title" inert>
+    <header class="chat-header">
+      <div>
+        <p>Portfolio guide</p>
+        <strong id="chat-title">Ask about Idris</strong>
+      </div>
+      <button id="chat-close" class="chat-close" type="button" aria-label="Close chat">×</button>
+    </header>
+
+    <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions">
+      <div class="message bot-message">
+        Hi, I'm the AI guide for this portfolio. Ask me about Idris's projects, education or current focus.
+      </div>
+    </div>
+
+    <div class="chat-suggestions" role="group" aria-label="Suggested questions">
+      <button class="suggestion-btn" type="button">What is Idris building?</button>
+      <button class="suggestion-btn" type="button">What is he studying?</button>
+    </div>
+
+    <form id="chat-form" class="chat-input-area">
+      <label class="sr-only" for="chat-input">Ask a question about Idris</label>
+      <input id="chat-input" type="text" placeholder="Ask something…" autocomplete="off" maxlength="300" required>
+      <button type="submit" class="chat-send" aria-label="Send question">Send</button>
+    </form>
+  </section>
+
+  <script src="script.js" defer></script>
 </body>
 
 </html>
