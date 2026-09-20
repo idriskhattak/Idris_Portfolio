@@ -430,8 +430,8 @@ h3 {
 
 .now-card h2 {
   margin-bottom: 28px;
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  line-height: 1.12;
+  font-size: clamp(1.4rem, 1.9vw, 1.8rem);
+  line-height: 1.18;
 }
 
 .now-card ul {
@@ -561,7 +561,7 @@ h3 {
 }
 
 .system-map {
-  align-self: center;
+  align-self: start;
   padding: 28px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
@@ -747,6 +747,12 @@ h3 {
   gap: clamp(60px, 10vw, 140px);
 }
 
+.about-heading {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+
 .about-heading h2 {
   max-width: 560px;
 }
@@ -895,16 +901,6 @@ h3 {
   max-width: 660px;
   margin-bottom: 0;
   color: rgba(255, 255, 255, 0.62);
-}
-
-.timeline-item.current h3::after {
-  content: "";
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  margin-left: 14px;
-  border-radius: 50%;
-  background: #7ce0bd;
 }
 
 .inline-link {
@@ -1343,6 +1339,10 @@ footer {
     gap: 80px;
   }
 
+  .about-heading {
+    position: static;
+  }
+
   .now-card {
     width: min(520px, calc(100% - 14px));
     justify-self: end;
@@ -1505,6 +1505,10 @@ footer {
 
   .about-layout {
     gap: 38px;
+  }
+
+  .about-heading {
+    position: static;
   }
 
   .story-lead {
