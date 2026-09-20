@@ -91,44 +91,60 @@
           </div>
         </header>
 
-        <article class="case-study portfolio-study">
+        <article class="case-study">
           <div class="case-copy">
-            <p class="case-meta"><span>Live project</span> · Built in 2026</p>
-            <h3>This portfolio has an AI guide inside.</h3>
+            <p class="case-meta"><span>Fine-tuning study</span> · Feb 2025</p>
+            <h3>Teaching Llama 2 to answer questions about one university.</h3>
             <p class="case-lead">
-              Instead of making every visitor search through a long page, I built an assistant that answers questions
-              about my background and work using information grounded in this portfolio.
+              Students at Abdul Wali Khan University Mardan ask the same admissions and programme questions every
+              term. I wanted to know how small a dataset could be and still shift a 7B model's behaviour, so I wrote
+              41 question–answer pairs by hand and fine-tuned on those alone.
+            </p>
+            <p class="case-lead">
+              It works for questions close to the training set and invents details for anything outside it. 41 pairs
+              buys you tone and format, not knowledge. The honest fix is retrieval over the university's actual
+              documents, which is what I would build if I started again.
             </p>
 
             <dl class="case-details">
               <div>
-                <dt>Built across</dt>
-                <dd>Frontend, backend API and retrieval-augmented generation</dd>
+                <dt>Base model</dt>
+                <dd>Llama-2-7b-chat, loaded in 4-bit NF4</dd>
               </div>
               <div>
-                <dt>Why it matters</dt>
-                <dd>It is my working laboratory for end-to-end AI product development</dd>
+                <dt>Method</dt>
+                <dd>QLoRA — rank 64, alpha 16, dropout 0.1</dd>
+              </div>
+              <div>
+                <dt>Training run</dt>
+                <dd>1 epoch, batch size 4, lr 2e-4, on a single Colab T4</dd>
+              </div>
+              <div>
+                <dt>Evaluation</dt>
+                <dd>Manual inspection only — no held-out set, which is the main gap</dd>
               </div>
             </dl>
 
             <div class="case-actions">
-              <button class="btn btn-light" type="button" data-open-chat>Try the AI guide</button>
-              <a class="text-link light-link" href="https://github.com/idriskhattak/Idris_Portfolio" target="_blank"
-                rel="noopener noreferrer">View source <span aria-hidden="true">↗</span></a>
+              <a class="btn btn-light" href="https://github.com/idriskhattak/AWKUM-ChatBot" target="_blank"
+                rel="noopener noreferrer">Read the notebook <span aria-hidden="true">↗</span></a>
+              <a class="text-link light-link"
+                href="https://github.com/idriskhattak/AWKUM-ChatBot/blob/main/awkum_dataset_updated.json"
+                target="_blank" rel="noopener noreferrer">See the dataset <span aria-hidden="true">↗</span></a>
             </div>
           </div>
 
-          <div class="system-map" role="group" aria-label="Portfolio assistant flow">
+          <div class="system-map">
             <div class="map-heading">
-              <span>How a question travels</span>
-              <span class="live-indicator"><i></i> Live</span>
+              <span>Training configuration</span>
             </div>
-            <ol>
-              <li><span>01</span><strong>You ask</strong><small>A question about Idris</small></li>
-              <li><span>02</span><strong>It retrieves</strong><small>Relevant portfolio context</small></li>
-              <li><span>03</span><strong>AI reasons</strong><small>With grounded information</small></li>
-              <li><span>04</span><strong>You receive</strong><small>A focused answer</small></li>
-            </ol>
+            <dl class="spec-list">
+              <div><dt>Dataset</dt><dd>41 hand-written pairs</dd></div>
+              <div><dt>Trainable params</dt><dd>~0.5% of the model</dd></div>
+              <div><dt>Precision</dt><dd>4-bit NF4 · bf16 compute</dd></div>
+              <div><dt>Libraries</dt><dd>transformers · peft · trl</dd></div>
+              <div><dt>Hardware</dt><dd>Single T4, free tier</dd></div>
+            </dl>
           </div>
         </article>
 
@@ -136,27 +152,32 @@
           <article class="project-row">
             <p class="project-index">02</p>
             <div class="project-title">
+              <p>Final-year project · 2024</p>
+              <h3>Counting people in video, then estimating who they are</h3>
+            </div>
+            <p class="project-summary">
+              YOLOv8n tracks people across frames and counts them as they cross a defined line; DeepFace then
+              estimates demographic attributes per detection. Counting held up well. The attribute step did not—the
+              underlying models carry known bias, and I would not put that part near a real decision.
+            </p>
+            <a class="project-status project-link" href="https://github.com/idriskhattak/Human-Counting-and-Ethnicity"
+              target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="project-row">
+            <p class="project-index">03</p>
+            <div class="project-title">
               <p>Generative vision study</p>
               <h3>Full Fingerprint Reconstruction</h3>
             </div>
             <p class="project-summary">
               Explored how a deep-learning model could reconstruct a complete fingerprint from a partial image, with a
               focus on image preparation and visual evaluation.
+              <!-- TODO(Idris): replace with real figures — architecture, dataset + size,
+                   train/test split, and the metric you actually measured (SSIM? PSNR?). -->
+              <em class="todo-note">Numbers and write-up to add.</em>
             </p>
-            <p class="project-status">Case study coming soon</p>
-          </article>
-
-          <article class="project-row">
-            <p class="project-index">03</p>
-            <div class="project-title">
-              <p>Domain-adapted language model</p>
-              <h3>AWKUM University Assistant</h3>
-            </div>
-            <p class="project-summary">
-              Fine-tuned Llama 2 on a custom university dataset to explore how a language model can answer questions
-              within a focused knowledge domain.
-            </p>
-            <p class="project-status">Repository link next</p>
+            <p class="project-status">Not yet public</p>
           </article>
 
           <article class="project-row">
@@ -166,25 +187,44 @@
               <h3>Hand Gesture Recognition</h3>
             </div>
             <p class="project-summary">
-              Built a recognition pipeline with OpenCV and MediaPipe, covering the less-visible work of collecting,
+              A recognition pipeline built on OpenCV and MediaPipe, covering the less-visible work of collecting,
               preparing and evaluating visual data.
+              <!-- TODO(Idris): replace with real figures — how many gesture classes, how many
+                   samples you recorded, accuracy, and frames per second on your machine. -->
+              <em class="todo-note">Numbers and repository to add.</em>
             </p>
-            <p class="project-status">Repository link next</p>
+            <p class="project-status">Not yet public</p>
           </article>
 
           <article class="project-row project-in-progress">
             <p class="project-index">05</p>
             <div class="project-title">
               <p>Currently on the desk</p>
-              <h3>A new flagship project</h3>
+              <h3>Retrieval over real documents</h3>
             </div>
             <p class="project-summary">
-              An end-to-end AI build is in progress. I will share the problem, engineering decisions and results when
-              it is ready—not before.
+              Rebuilding the university assistant the way it should have been done: retrieval over source documents
+              instead of a fine-tune, with an evaluation set I can actually measure against.
             </p>
             <p class="project-status"><span></span> In progress</p>
           </article>
         </div>
+
+        <aside class="colophon" aria-labelledby="colophon-title">
+          <div>
+            <h3 id="colophon-title">This page answers questions too.</h3>
+            <p>
+              There is a small assistant behind the button in the corner. It retrieves from a short, hand-written
+              description of my background and passes that to a model, so it will admit when something is not covered
+              rather than guess. Ask it anything you would ask me.
+            </p>
+          </div>
+          <div class="colophon-actions">
+            <button class="btn btn-dark" type="button" data-open-chat>Ask it something</button>
+            <a class="text-link" href="https://github.com/idriskhattak/Idris_Portfolio" target="_blank"
+              rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
+          </div>
+        </aside>
       </div>
     </section>
 
