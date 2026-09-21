@@ -1,86 +1,34 @@
-const menuBtn = document.querySelector('.menu-btn');
-const navLinks = document.querySelector('.nav-links');
+const menuButton = document.querySelector(".menu-btn");
+const navigationLinks = document.querySelector(".nav-links");
 
-const navigationEntry = performance.getEntriesByType('navigation')[0];
-const navigationType = navigationEntry ? navigationEntry.type : 'navigate';
+function closeNavigation() {
+  if (!menuButton || !navigationLinks) return;
 
-// Only force the top on a fresh visit.
-// Refresh and back/forward navigation keep their normal scroll behavior.
-if (navigationType === 'navigate' && !window.location.hash) {
-
-  // Temporarily stop the browser restoring an old scroll position
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-
-  // Force top immediately
-  window.scrollTo(0, 0);
-
-  // Force top again after the page has rendered
-  window.addEventListener('load', () => {
-    window.scrollTo(0, 0);
-
-    requestAnimationFrame(() => {
-      window.scrollTo(0, 0);
-    });
-
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-
-      // Return normal browser scroll restoration
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'auto';
-      }
-    }, 100);
-  });
-
-} else {
-
-  // Refresh / back / forward should behave normally
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'auto';
-  }
+  navigationLinks.classList.remove("open");
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-label", "Open navigation");
 }
 
+if (menuButton && navigationLinks) {
+  menuButton.addEventListener("click", () => {
+    const isOpen = navigationLinks.classList.toggle("open");
 
-// Mobile navigation menu
-if (menuBtn && navLinks) {
-
-  menuBtn.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-
-    menuBtn.setAttribute(
-      'aria-expanded',
-      open ? 'true' : 'false'
-    );
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
   });
 
-
-  // Close mobile menu after clicking a navigation link
-  document.querySelectorAll('.nav-links a').forEach(link => {
-
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-
-      menuBtn.setAttribute(
-        'aria-expanded',
-        'false'
-      );
-    });
-
+  navigationLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeNavigation);
   });
 }
 
-
-// Automatically update footer year
-const yearElement = document.getElementById('year');
+const yearElement = document.getElementById("year");
 
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
-/* =========================
-   AI CHATBOT
-========================= */
+
+/* Portfolio AI guide */
 
 const chatToggle = document.getElementById("chat-toggle");
 const chatWindow = document.getElementById("chat-window");
@@ -88,65 +36,121 @@ const chatClose = document.getElementById("chat-close");
 const chatForm = document.getElementById("chat-form");
 const chatInput = document.getElementById("chat-input");
 const chatMessages = document.getElementById("chat-messages");
+const chatSend = document.querySelector(".chat-send");
 const suggestionButtons = document.querySelectorAll(".suggestion-btn");
+const openChatButtons = document.querySelectorAll("[data-open-chat]");
 
 const CHAT_API_URL = "https://idris-portfolio-ai.vercel.app/chat";
+let lastFocusedElement = null;
+let inertTimer = null;
 
-// Create or reuse a browser session ID
-let sessionId = localStorage.getItem("idris_chat_session");
+function createSessionId() {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
 
-if (!sessionId) {
-  sessionId = crypto.randomUUID();
-  localStorage.setItem("idris_chat_session", sessionId);
+  return `session-${Date.now()}-${Math.random().toString(16).slice(2)}`;
 }
 
-// Open chatbot
-chatToggle.addEventListener("click", () => {
-  chatWindow.classList.toggle("active");
+function getSessionId() {
+  try {
+    const storedSession = localStorage.getItem("idris_chat_session");
 
-  if (chatWindow.classList.contains("active")) {
-    setTimeout(() => {
-      chatInput.focus();
-    }, 200);
+    if (storedSession) return storedSession;
+
+    const newSession = createSessionId();
+    localStorage.setItem("idris_chat_session", newSession);
+    return newSession;
+  } catch {
+    return createSessionId();
+  }
+}
+
+const sessionId = getSessionId();
+
+function openChat(trigger) {
+  if (!chatWindow || !chatToggle || !chatInput) return;
+
+  window.clearTimeout(inertTimer);
+  lastFocusedElement = trigger || document.activeElement;
+  chatWindow.removeAttribute("inert");
+  chatWindow.classList.add("active");
+  chatToggle.setAttribute("aria-expanded", "true");
+  chatToggle.setAttribute("aria-label", "Ask Idris AI — close portfolio guide");
+
+  window.setTimeout(() => chatInput.focus(), 180);
+}
+
+function closeChat({ restoreFocus = true } = {}) {
+  if (!chatWindow || !chatToggle) return;
+
+  chatWindow.classList.remove("active");
+  chatToggle.setAttribute("aria-expanded", "false");
+  chatToggle.setAttribute("aria-label", "Ask Idris AI — open portfolio guide");
+
+  inertTimer = window.setTimeout(() => chatWindow.setAttribute("inert", ""), 200);
+
+  if (restoreFocus && lastFocusedElement instanceof HTMLElement) {
+    lastFocusedElement.focus();
+  }
+}
+
+if (chatToggle) {
+  chatToggle.addEventListener("click", () => {
+    if (chatWindow?.classList.contains("active")) {
+      closeChat();
+    } else {
+      openChat(chatToggle);
+    }
+  });
+}
+
+if (chatClose) {
+  chatClose.addEventListener("click", () => closeChat());
+}
+
+openChatButtons.forEach((button) => {
+  button.addEventListener("click", () => openChat(button));
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+
+  if (chatWindow?.classList.contains("active")) {
+    closeChat();
+    return;
+  }
+
+  if (navigationLinks?.classList.contains("open")) {
+    closeNavigation();
+    menuButton?.focus();
   }
 });
 
-// Close chatbot
-chatClose.addEventListener("click", () => {
-  chatWindow.classList.remove("active");
-});
-
-// Add message to chat
-function formatBotMessage(text) {
+function escapeHtml(text) {
   return text
-    // Escape HTML first
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
-    // Bold Markdown: **text**
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-
-    // Numbered list support
-    .replace(/(^|\n)(\d+)\.\s+/g, "$1<br><strong>$2.</strong> ")
-
-    // Bullet list support
-    .replace(/(^|\n)[-*]\s+/g, "$1<br>• ")
-
-    // New lines
-    .replace(/\n/g, "<br>");
+function formatBotMessage(text) {
+  return escapeHtml(text)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\r?\n/g, "<br>");
 }
 
 function addMessage(text, sender) {
-  const message = document.createElement("div");
+  if (!chatMessages) return null;
 
-  message.classList.add("message");
+  const message = document.createElement("div");
+  message.classList.add("message", sender === "user" ? "user-message" : "bot-message");
 
   if (sender === "user") {
-    message.classList.add("user-message");
     message.textContent = text;
   } else {
-    message.classList.add("bot-message");
     message.innerHTML = formatBotMessage(text);
   }
 
@@ -156,81 +160,76 @@ function addMessage(text, sender) {
   return message;
 }
 
-// Loading message
-function addLoadingMessage() {
-  const loading = addMessage("Thinking...", "bot");
-  loading.classList.add("chat-loading");
-  return loading;
+function setChatBusy(isBusy) {
+  if (chatInput) chatInput.disabled = isBusy;
+  if (chatSend) chatSend.disabled = isBusy;
+  if (chatMessages) chatMessages.setAttribute("aria-busy", String(isBusy));
+
+  suggestionButtons.forEach((button) => {
+    button.disabled = isBusy;
+  });
 }
 
-// Send question to backend
 async function sendQuestion(question) {
-  if (!question.trim()) return;
+  const cleanQuestion = question.trim();
 
-  addMessage(question, "user");
+  if (!cleanQuestion || !chatInput) return;
 
+  addMessage(cleanQuestion, "user");
   chatInput.value = "";
-  chatInput.disabled = true;
+  setChatBusy(true);
 
-  const loadingMessage = addLoadingMessage();
+  const loadingMessage = addMessage("Thinking…", "bot");
+  loadingMessage?.classList.add("chat-loading");
+
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 20000);
 
   try {
     const response = await fetch(CHAT_API_URL, {
       method: "POST",
-
       headers: {
         "Content-Type": "application/json"
       },
-
       body: JSON.stringify({
-        question: question,
+        question: cleanQuestion,
         session_id: sessionId
-      })
+      }),
+      signal: controller.signal
     });
 
     if (!response.ok) {
-      throw new Error(`Server returned ${response.status}`);
+      throw new Error(`The guide returned ${response.status}`);
     }
 
     const data = await response.json();
-
-    loadingMessage.remove();
-
-    addMessage(
-      data.answer || "I couldn't generate a response.",
-      "bot"
-    );
+    loadingMessage?.remove();
+    addMessage(data.answer || "I couldn't find a clear answer to that yet.", "bot");
   } catch (error) {
-    console.error("Chatbot error:", error);
+    console.error("Portfolio guide error:", error);
+    loadingMessage?.remove();
 
-    loadingMessage.remove();
+    const errorMessage = error.name === "AbortError"
+      ? "That took longer than expected. Please try again."
+      : "The AI guide is temporarily unavailable. You can still reach Idris through the contact section.";
 
-    addMessage(
-      "Sorry, the AI assistant is temporarily unavailable. Please try again.",
-      "bot"
-    );
+    addMessage(errorMessage, "bot");
   } finally {
-    chatInput.disabled = false;
+    window.clearTimeout(timeout);
+    setChatBusy(false);
     chatInput.focus();
   }
 }
 
-// Submit typed question
-chatForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+if (chatForm && chatInput) {
+  chatForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    sendQuestion(chatInput.value);
+  });
+}
 
-  const question = chatInput.value.trim();
-
-  if (question) {
-    sendQuestion(question);
-  }
-});
-
-// Suggested questions
 suggestionButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const question = button.textContent.trim();
-
-    sendQuestion(question);
+    sendQuestion(button.textContent || "");
   });
 });
