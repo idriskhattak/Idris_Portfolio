@@ -57,9 +57,7 @@ Search for `TODO(Idris)`:
 - Deploy portfolio changes to GitHub Pages
 =======
 - Add figures to the hand gesture case study
-- Give Human Insight AI its own page, and reconcile its ethnicity detector with the
-  argument against one on the people-counting page
-- Present the Fiverr house-visibility classifier — the only paid client work
+- Give Human Insight AI its own case-study page
 - Add a share card for any new project (`tools/og-template.html`)
 - Add an evaluation set to the university assistant rebuild
 - Re-index the chat assistant's corpus so it covers the project pages
