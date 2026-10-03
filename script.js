@@ -28,7 +28,7 @@ if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
 
-/* Portfolio AI guide */
+/* Marginalia — the portfolio assistant */
 
 const chatToggle = document.getElementById("chat-toggle");
 const chatWindow = document.getElementById("chat-window");
@@ -76,7 +76,7 @@ function openChat(trigger) {
   chatWindow.removeAttribute("inert");
   chatWindow.classList.add("active");
   chatToggle.setAttribute("aria-expanded", "true");
-  chatToggle.setAttribute("aria-label", "Ask Idris AI — close portfolio guide");
+  chatToggle.setAttribute("aria-label", "Ask Marginalia — close the portfolio assistant");
 
   window.setTimeout(() => chatInput.focus(), 180);
 }
@@ -86,7 +86,7 @@ function closeChat({ restoreFocus = true } = {}) {
 
   chatWindow.classList.remove("active");
   chatToggle.setAttribute("aria-expanded", "false");
-  chatToggle.setAttribute("aria-label", "Ask Idris AI — open portfolio guide");
+  chatToggle.setAttribute("aria-label", "Ask Marginalia — open the portfolio assistant");
 
   inertTimer = window.setTimeout(() => chatWindow.setAttribute("inert", ""), 200);
 
@@ -231,7 +231,7 @@ async function sendQuestion(question) {
     try {
       answer = await requestAnswer(cleanQuestion, 30000);
     } catch (firstError) {
-      console.warn("Portfolio guide: first attempt failed, retrying.", firstError);
+      console.warn("Marginalia: first attempt failed, retrying.", firstError);
       answer = await requestAnswer(cleanQuestion, 30000);
     }
 
@@ -240,12 +240,12 @@ async function sendQuestion(question) {
     addMessage(answer, "bot");
   } catch (error) {
     window.clearTimeout(wakingNotice);
-    console.error("Portfolio guide error:", error);
+    console.error("Marginalia error:", error);
     loadingMessage?.remove();
 
     const errorMessage = error.name === "AbortError"
       ? "That took longer than expected. Please try again."
-      : "The AI guide is temporarily unavailable. You can still reach Idris through the contact section.";
+      : "Marginalia is temporarily unavailable. You can still reach Idris through the contact section.";
 
     addMessage(errorMessage, "bot");
   } finally {
