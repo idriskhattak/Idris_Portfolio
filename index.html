@@ -7,18 +7,18 @@
   <meta name="description"
     content="Idris Khattak is an Applied AI master's student in Oslo building practical machine-learning systems across data, APIs and thoughtful interfaces.">
   <meta name="theme-color" content="#f2efe6">
-  <meta property="og:title" content="Idris Khattak — Applied AI Master's Student">
+  <meta property="og:title" content="Idris Khattak · Applied AI Master's Student">
   <meta property="og:description"
     content="Practical AI work, an honest learning journey, and selected projects from Idris Khattak.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://idriskhattak.github.io/Idris_Portfolio/">
   <meta property="og:image" content="https://idriskhattak.github.io/Idris_Portfolio/og-image.png">
-  <meta property="og:image:alt" content="Idris Khattak — Applied AI master's student in Oslo">
+  <meta property="og:image:alt" content="Idris Khattak, Applied AI master&#39;s student in Oslo">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://idriskhattak.github.io/Idris_Portfolio/">
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2319201c'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Arial' font-weight='700' fill='%23f2efe6'%3EIK%3C/text%3E%3C/svg%3E">
-  <title>Idris Khattak — Applied AI Master's Student</title>
+  <title>Idris Khattak · Applied AI Master's Student</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -32,7 +32,7 @@
 
   <header class="site-header">
     <nav class="container nav" aria-label="Primary navigation">
-      <a class="brand" href="#home" aria-label="IK — Idris Khattak, home">
+      <a class="brand" href="#home" aria-label="IK, Idris Khattak, home">
         <span class="brand-mark">IK</span>
         <span class="brand-name">Idris Khattak</span>
       </a>
@@ -91,7 +91,7 @@
         <header class="section-heading">
           <p class="section-kicker">01 / Selected work</p>
           <div>
-            <h2>Five projects, including the parts that did not work.</h2>
+            <h2>Six projects, including the parts that did not work.</h2>
             <p>Each one lists what I actually measured. Where a project has no numbers yet, it says so.</p>
           </div>
         </header>
@@ -118,7 +118,7 @@
               </div>
               <div>
                 <dt>Method</dt>
-                <dd>QLoRA — rank 64, alpha 16, dropout 0.1</dd>
+                <dd>QLoRA at rank 64, alpha 16, dropout 0.1</dd>
               </div>
               <div>
                 <dt>Training run</dt>
@@ -126,7 +126,7 @@
               </div>
               <div>
                 <dt>Evaluation</dt>
-                <dd>Manual inspection only — no held-out set, which is the main gap</dd>
+                <dd>Manual inspection only. There was no held-out set, which is the main gap</dd>
               </div>
             </dl>
 
@@ -158,9 +158,12 @@
             <p class="work-year">2026</p>
             <div class="work-body">
               <h3>Human Insight AI: one video interface for five detectors</h3>
-              <p>A Flask app that runs several vision models over an uploaded video behind one interface. Each
-                detector returns the same prediction shape, so the streaming pipeline does not care which is
-                selected.</p>
+              <p>A Flask app (<code>main-app.py</code>) that runs several vision models over an uploaded video behind
+                one interface. Each detector is its own module (<code>human</code>, <code>fire</code>, <code>gender</code>,
+                <code>ethnicity</code>, <code>fight</code>) and they all return the same prediction shape, so the
+                streaming pipeline does not care which one is selected. Fight detection is the exception: it needs the whole clip. I would drop gender
+                and ethnicity for the
+                <a href="projects/people-counting/index.html">reasons set out here</a>.</p>
             </div>
             <p class="work-stack">Flask · OpenCV · YOLO</p>
             <p class="work-status"><a class="work-link" href="https://github.com/idriskhattak/AI-System"
@@ -172,8 +175,8 @@
             <div class="work-body">
               <h3><a href="projects/fingerprint-reconstruction/index.html">Reconstructing a complete fingerprint
                   from a partial image</a></h3>
-              <p>A GAN trained on SOCOFing. Average SSIM 0.64 across two runs — moderate structural similarity, and
-                the discriminator still spots most reconstructions as fake.</p>
+              <p>A GAN trained on SOCOFing. Average SSIM 0.64 across two runs, which is moderate structural similarity.
+                The discriminator still spots most reconstructions as fake.</p>
             </div>
             <p class="work-stack">PyTorch · OpenCV</p>
             <p class="work-status"><a class="work-link" href="projects/fingerprint-reconstruction/index.html">Case
@@ -196,22 +199,16 @@
           <li class="work-item">
             <p class="work-year">2024</p>
             <div class="work-body">
-              <h3>Full fingerprint reconstruction</h3>
-              <p>Reconstructing a complete fingerprint from a partial image, with most of the effort going into
-                preprocessing.
-                The project uses the <a href="https://www.kaggle.com/datasets/ruizgara/socofing" target="_blank"
-                  rel="noopener noreferrer">SOCOFing dataset</a>.
-                <!-- TODO(Idris): replace with the real one-liner — architecture, dataset + size,
-                     and the metric you measured (SSIM? PSNR?). Then add a page under
-                     projects/fingerprint-reconstruction/ and link the title. -->
-              </p>
+              <h3>Sorting property photos for a paying client</h3>
+              <p>A Fiverr client needed property photos sorted into clearly visible and obscured, where obscured
+                means a tree, a parked car or a wall in front of the house. The interesting part was that the
+                client's definition, not a public label set, decided what counted as correct.</p>
             </div>
-            <p class="work-stack">PyTorch · OpenCV</p>
-            <p class="work-status">Write-up pending</p>
+            <p class="work-stack">Client work · computer vision</p>
+            <p class="work-status">Client-owned</p>
           </li>
 
           <li class="work-item">
-
             <p class="work-year">2023</p>
             <div class="work-body">
               <h3><a href="projects/hand-gesture-recognition/index.html">Recognising hand signs from a webcam in
@@ -227,7 +224,7 @@
           <li class="work-item work-item-active">
             <p class="work-year">Now</p>
             <div class="work-body">
-              <h3>Improving my LLM-RAG assistant</h3>
+              <h3>Marginalia, retrieval over real documents</h3>
               <p>Improving my portfolio assistant with a production-minded RAG pipeline: FastAPI searches structured
                 Markdown knowledge with FAISS and all-MiniLM-L6-v2 embeddings, then uses OpenAI gpt-oss-20b through
                 Groq to generate grounded, useful answers without exposing private credentials.</p>
@@ -239,15 +236,15 @@
 
         <aside class="colophon" aria-labelledby="colophon-title">
           <div>
-            <h3 id="colophon-title">This page answers questions too.</h3>
+            <h3 id="colophon-title">Marginalia answers questions about all of this.</h3>
             <p>
-              There is a small assistant behind the button in the corner. It retrieves from a short, hand-written
+              Marginalia is the assistant behind the button in the corner. It retrieves from a short, hand-written
               description of my background and passes that to a model, so it will admit when something is not covered
               rather than guess. Ask it anything you would ask me.
             </p>
           </div>
           <div class="colophon-actions">
-            <button class="btn btn-dark" type="button" data-open-chat>Ask it something</button>
+            <button class="btn btn-dark" type="button" data-open-chat>Ask Marginalia</button>
             <a class="text-link" href="https://github.com/idriskhattak/Idris_Portfolio" target="_blank"
               rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
           </div>
@@ -261,11 +258,8 @@
           <p class="section-kicker">02 / About</p>
           <h2>Four years of computer vision, now moving into language models.</h2>
 
-          <!-- TODO(Idris): add portrait.jpg (square, at least 600x600) to the repo root and
-               uncomment this. A face makes a real difference on an internship application.
-          <img class="portrait" src="portrait.jpg" width="600" height="600" loading="lazy"
+          <img class="portrait" src="assets/profile.jpg" width="853" height="1280" loading="lazy"
             alt="Idris Khattak">
-          -->
         </div>
 
         <div class="about-story">
@@ -331,7 +325,7 @@
 
         <div class="timeline">
           <article class="timeline-item current">
-            <p class="time">Aug 2026 — now</p>
+            <p class="time">Aug 2026 – now</p>
             <div>
               <p class="timeline-label">Current chapter</p>
               <h3>Master's in Applied Artificial Intelligence</h3>
@@ -341,20 +335,19 @@
             </div>
           </article>
 
-          <!-- TODO(Idris): the 2024 → 2026 gap is the first thing a recruiter will notice.
-               Fill in what you were doing — freelance CV work, teaching Python, applying to
-               master's programmes, the AWKUM fine-tune — and delete this placeholder. -->
           <article class="timeline-item">
-            <p class="time">2024 — 2026</p>
+            <p class="time">2024 – 2026</p>
             <div>
               <h3>Freelance and self-directed work</h3>
               <p class="institution">Pakistan</p>
-              <p>Worked as a freelancer across AI projects, while helping Loomlan improve its Shopify store design and build web-scraping workflows.</p>
+              <p>Freelance work across AI and web projects: an image-classification job for a Fiverr client, and
+                Shopify store design and web-scraping workflows for Loomlan. I also wrote and taught an
+                introductory Python course.</p>
             </div>
           </article>
 
           <article class="timeline-item">
-            <p class="time">2020 — 2024</p>
+            <p class="time">2020 – 2024</p>
             <div>
               <h3>BS Artificial Intelligence</h3>
               <p class="institution">Hazara University Mansehra</p>
@@ -364,7 +357,7 @@
           </article>
 
           <article class="timeline-item">
-            <p class="time">Jun — Sep 2023</p>
+            <p class="time">Jun – Sep 2023</p>
             <div>
               <h3>AI Programming with Python Nanodegree</h3>
               <p class="institution">Udacity · AWS-sponsored scholarship</p>
@@ -465,24 +458,24 @@
     </div>
   </footer>
 
-  <button id="chat-toggle" class="chat-toggle" type="button" aria-label="Ask Idris AI — open portfolio guide"
+  <button id="chat-toggle" class="chat-toggle" type="button" aria-label="Ask Marginalia, open the portfolio assistant"
     aria-controls="chat-window" aria-expanded="false">
     <span class="chat-spark" aria-hidden="true">✦</span>
-    <span>Ask Idris AI</span>
+    <span>Ask Marginalia</span>
   </button>
 
   <section id="chat-window" class="chat-window" role="dialog" aria-labelledby="chat-title" inert>
     <header class="chat-header">
       <div>
-        <p>Portfolio guide</p>
-        <strong id="chat-title">Ask about Idris</strong>
+        <p>Notes on Idris's work</p>
+        <strong id="chat-title">Marginalia</strong>
       </div>
       <button id="chat-close" class="chat-close" type="button" aria-label="Close chat">×</button>
     </header>
 
     <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions">
       <div class="message bot-message">
-        Hi, I'm the AI guide for this portfolio. Ask me about Idris's projects, education or current focus.
+        I'm Marginalia, the notes alongside Idris's work. Ask me about any of it: the projects, the numbers, or what he would do differently.
       </div>
     </div>
 
