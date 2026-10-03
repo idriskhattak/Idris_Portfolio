@@ -42,13 +42,11 @@ Referenced by the pages but not in the repo:
 Search for `TODO(Idris)`:
 
 - Example runs on both project pages
-- Fingerprint reconstruction — figures, then its own page
-- Hand gesture recognition — figures, then its own page
 - The 2024–2026 gap in the timeline
 - Confirm the internship term in the contact section
 
 ## Next improvements
-- Publish repositories for the fingerprint and gesture projects
+- Add figures to the hand gesture case study
 - Add an evaluation set to the university assistant rebuild
 - Re-index the chat assistant's corpus so it covers the project pages
 - Deploy to GitHub Pages, Vercel, or Netlify

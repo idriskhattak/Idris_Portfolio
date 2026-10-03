@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="A GAN for reconstructing complete fingerprint images from partial inputs, evaluated with SSIM and discriminator accuracy.">
+  <meta name="theme-color" content="#f2efe6">
+  <meta property="og:title" content="Reconstructing a complete fingerprint — Idris Khattak">
+  <meta property="og:description"
+    content="A PyTorch GAN that reconstructs complete fingerprint images from partial inputs, with results measured using SSIM and discriminator accuracy.">
+  <meta property="og:type" content="article">
+  <meta property="og:url"
+    content="https://idriskhattak.github.io/Idris_Portfolio/projects/fingerprint-reconstruction/">
+  <!-- TODO(Idris): add projects/fingerprint-reconstruction/og-image.png (1200x630). -->
+  <meta property="og:image"
+    content="https://idriskhattak.github.io/Idris_Portfolio/projects/fingerprint-reconstruction/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://idriskhattak.github.io/Idris_Portfolio/projects/fingerprint-reconstruction/">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2319201c'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Arial' font-weight='700' fill='%23f2efe6'%3EIK%3C/text%3E%3C/svg%3E">
+  <title>Reconstructing a complete fingerprint — Idris Khattak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary navigation">
+      <a class="brand" href="../../index.html" aria-label="IK — Idris Khattak, home">
+        <span class="brand-mark">IK</span>
+        <span class="brand-name">Idris Khattak</span>
+      </a>
+
+      <button class="menu-btn" type="button" aria-label="Open navigation" aria-controls="primary-links"
+        aria-expanded="false">
+        <span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="primary-links">
+        <a href="../../index.html#work">Work</a>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#journey">Journey</a>
+        <a href="../../index.html#credentials">Credentials</a>
+        <a class="nav-external" href="https://github.com/idriskhattak" target="_blank" rel="noopener noreferrer">
+          GitHub <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="../../index.html#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="project-page">
+    <div class="container">
+      <a class="back-link" href="../../index.html#work"><span aria-hidden="true">←</span> All work</a>
+
+      <header class="project-hero">
+        <p class="section-kicker">Generative reconstruction · 2024</p>
+        <h1>Reconstructing a complete fingerprint from a partial image.</h1>
+        <p class="project-lead">
+          I built a Generative Adversarial Network that learns to recover missing fingerprint information from partial
+          images. The interesting part was not getting a generated image on screen; it was preprocessing the data and
+          checking whether the reconstruction had measurable similarity to the original.
+        </p>
+
+        <dl class="fact-strip">
+          <div><dt>Role</dt><dd>Solo, self-directed</dd></div>
+          <div><dt>Stack</dt><dd>Python · PyTorch · OpenCV</dd></div>
+          <div><dt>Dataset</dt><dd>SOCOFing, 6,000 images</dd></div>
+          <div><dt>Status</dt><dd>Prototype, evaluated</dd></div>
+        </dl>
+
+        <div class="project-actions">
+          <a class="btn btn-dark" href="https://github.com/idriskhattak/Full-FingerPrint-Reconsturction"
+            target="_blank" rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a>
+          <a class="text-link"
+            href="https://github.com/idriskhattak/Full-FingerPrint-Reconsturction/blob/main/fingerprint.ipynb"
+            target="_blank" rel="noopener noreferrer">The notebook <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="https://www.kaggle.com/datasets/ruizgara/socofing/data" target="_blank"
+            rel="noopener noreferrer">The dataset <span aria-hidden="true">↗</span></a>
+        </div>
+      </header>
+
+      <div class="prose">
+        <h2>The problem</h2>
+        <p>
+          A fingerprint image can be incomplete because of the capture angle, sensor coverage, or the way a finger
+          was placed. The goal was to reconstruct a plausible full image from a partial fingerprint, while keeping
+          the result close enough to the original to be useful for analysis.
+        </p>
+        <p>
+          I used the SOCOFing (Sokoto Coventry Fingerprint) dataset and built the preprocessing around the actual
+          training setup rather than treating the images as ready-made model inputs.
+        </p>
+
+        <h2>What I built</h2>
+        <p>
+          The generator receives a partial fingerprint and learns to fill in the missing structure. The discriminator
+          sees real and generated images and learns to distinguish between them. Their competing objectives provide a
+          training signal for producing more realistic reconstructions.
+        </p>
+        <p>
+          The notebook covers preprocessing, GAN training, generated-image inspection, model saving and loading, and
+          evaluation. It also supports GPU acceleration when CUDA is available.
+        </p>
+        <figure class="project-figure">
+          <img src="assets/reconstruction-examples.png"
+            alt="Five rows comparing partial fingerprints, generated full fingerprints, and original full fingerprints">
+          <figcaption>
+            Five examples generated by the notebook: each row compares the partial input, the GAN reconstruction, and
+            the original full fingerprint.
+          </figcaption>
+        </figure>
+
+        <h2>The numbers</h2>
+        <p>
+          The notebook reports two evaluation runs. The later run is included here rather than presenting only the
+          best-looking generated image:
+        </p>
+
+        <table class="results-table">
+          <caption>Evaluation results from the notebook</caption>
+          <tbody>
+            <tr><th scope="row">Dataset</th><td>SOCOFing fingerprint dataset</td></tr>
+            <tr><th scope="row">Training schedule</th><td>150-epoch GAN run</td></tr>
+            <tr><th scope="row">Average SSIM, first run</th><td>0.6421</td></tr>
+            <tr><th scope="row">Real-image discriminator accuracy, first run</th><td>99.28%</td></tr>
+            <tr><th scope="row">Fake-image discriminator accuracy, first run</th><td>91.57%</td></tr>
+            <tr><th scope="row">Average SSIM, later run</th><td>0.6127</td></tr>
+            <tr><th scope="row">Real-image discriminator accuracy, later run</th><td>99.88%</td></tr>
+            <tr><th scope="row">Fake-image discriminator accuracy, later run</th><td>91.98%</td></tr>
+          </tbody>
+        </table>
+
+        <p class="callout">
+          The SSIM values show moderate structural similarity, not a claim that the reconstruction is identical to the
+          source. The difference between the two runs is also a reminder that one generated sample or one checkpoint
+          is not enough to establish reliable reconstruction quality.
+        </p>
+
+        <h2>What went wrong</h2>
+        <p>
+          The discriminator is very strong on real images and still recognises most generated images as fake. That is
+          useful diagnostic information: visual plausibility and reconstruction fidelity are related, but they are not
+          the same result. The notebook measures both, but does not yet include a held-out test protocol or a
+          comparison against a simpler image-completion baseline.
+        </p>
+        <p>
+          I also saved and resumed checkpoints at different points in the notebook, which makes direct comparison
+          between runs less clean than it should be. A fixed evaluation split and a single recorded experiment
+          configuration would make the result easier to reproduce.
+        </p>
+
+        <h2>What I would do differently</h2>
+        <p>
+          I would define the partial-image mask and evaluation split before training, then compare the GAN with a
+          non-generative baseline. I would report SSIM across the full held-out set, add a perceptual metric, and
+          inspect whether the reconstructed ridge structure remains useful for downstream fingerprint matching.
+        </p>
+        <p>
+          The full implementation and notebook are available in the
+          <a href="https://github.com/idriskhattak/Full-FingerPrint-Reconsturction" target="_blank"
+            rel="noopener noreferrer">project repository</a>.
+        </p>
+      </div>
+
+      <nav class="project-next" aria-label="More work">
+        <p>Next project</p>
+        <a href="../people-counting/index.html">
+          <span>Human Counting and Ethnicity Detection</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-layout">
+      <p>© <span id="year"></span> Idris Khattak</p>
+      <p>Applied AI · Oslo, Norway</p>
+      <a href="../../index.html">Back to portfolio ↑</a>
+    </div>
+  </footer>
+
+  <script src="../../script.js" defer></script>
+</body>
+
+</html>
