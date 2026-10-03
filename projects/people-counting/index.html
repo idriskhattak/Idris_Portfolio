@@ -5,22 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="A final-year project counting people crossing a line in video with YOLOv8, and why I argued against shipping the demographic half of the brief.">
+    content="Human Counting and Ethnicity Detection: a YOLOv8 video pipeline for tracking people and counting crossings, with a critical review of the ethnicity-detection component.">
   <meta name="theme-color" content="#f2efe6">
-  <meta property="og:title" content="Counting people in video — Idris Khattak">
+  <meta property="og:title" content="Human Counting and Ethnicity Detection — Idris Khattak">
   <meta property="og:description"
-    content="YOLOv8 tracking and line-crossing counts, plus a demographic classifier I recommended against deploying.">
+    content="YOLOv8 tracking and line-crossing counts, plus an ethnicity-detection experiment I recommended against deploying.">
   <meta property="og:type" content="article">
   <meta property="og:url"
     content="https://idriskhattak.github.io/Idris_Portfolio/projects/people-counting/">
-  <!-- TODO(Idris): add projects/people-counting/og-image.png (1200x630). -->
   <meta property="og:image"
     content="https://idriskhattak.github.io/Idris_Portfolio/projects/people-counting/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://idriskhattak.github.io/Idris_Portfolio/projects/people-counting/">
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2319201c'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Arial' font-weight='700' fill='%23f2efe6'%3EIK%3C/text%3E%3C/svg%3E">
-  <title>Counting people in video — Idris Khattak</title>
+  <title>Human Counting and Ethnicity Detection — Idris Khattak</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -62,10 +61,11 @@
 
       <header class="project-hero">
         <p class="section-kicker">Final-year project · 2024</p>
-        <h1>Counting people in video, then deciding not to ship half of it.</h1>
+        <h1>Human Counting and Ethnicity Detection</h1>
         <p class="project-lead">
-          The brief had two halves: count people crossing a line in a video feed, and estimate demographic attributes
-          for each person detected. I built both. I recommended deploying one.
+          This project combines YOLOv8-based human detection and tracking with line-crossing counts, alongside an
+          ethnicity-detection experiment for detected people. I built both parts and recommended deploying only the
+          counting pipeline.
         </p>
 
         <dl class="fact-strip">
@@ -76,10 +76,11 @@
         </dl>
 
         <div class="project-actions">
-          <a class="btn btn-dark" href="https://github.com/idriskhattak/Human-Counting-and-Ethnicity" target="_blank"
+          <a class="btn btn-dark" href="https://github.com/idriskhattak/Human-Counting" target="_blank"
             rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="https://github.com/idriskhattak/Human-Counting-and-Ethnicity/blob/main/Main.ipynb"
-            target="_blank" rel="noopener noreferrer">Counting notebook <span aria-hidden="true">↗</span></a>
+          <a class="text-link"
+            href="https://github.com/idriskhattak/Human-Counting/tree/main/Human-Counting-and-Ethnicity" target="_blank"
+            rel="noopener noreferrer">Project files <span aria-hidden="true">↗</span></a>
         </div>
       </header>
 
@@ -125,21 +126,21 @@
             <tr><th scope="row">Tracking</th><td>Persistent IDs, trails drawn for debugging</td></tr>
             <tr><th scope="row">Counting region</th><td>Four-point band, 1060px wide, 44px deep</td></tr>
             <tr><th scope="row">Input</th><td>Recorded 1080-wide video</td></tr>
-            <tr><th scope="row">Attribute model</th><td>DeepFace, race action only</td></tr>
-            <tr><th scope="row">Counting accuracy</th><td>Not measured</td></tr>
+            <tr><th scope="row">Attribute model</th><td>DeepFace, ethnicity action only</td></tr>
+            <tr><th scope="row">Model evaluation</th><td>Pretrained models; no project-level benchmark</td></tr>
           </tbody>
         </table>
 
         <p class="callout">
-          I never measured counting accuracy against a hand-labelled clip. I watched the annotated output and the
-          numbers looked right. That is the same mistake as the fine-tuning project — checking whether something
-          looks correct instead of measuring whether it is.
+          The repository uses pretrained YOLOv8n and DeepFace models, but it does not include a labelled test set or
+          a project-specific accuracy report. I watched the annotated output and the numbers looked right. That is
+          not the same as measuring whether the system is correct.
         </p>
 
         <h2>The half I argued against</h2>
         <p>
-          The second requirement was demographic estimation per detected person. I implemented it with DeepFace,
-          calling the race classifier on each detected face, and I do not think it should be deployed.
+          The second requirement was ethnicity estimation per detected person. I implemented it with DeepFace,
+          calling the ethnicity classifier on each detected face, and I do not think it should be deployed.
         </p>
         <p>
           The call runs with <code>enforce_detection=False</code>. That flag exists so the pipeline does not crash
@@ -148,7 +149,7 @@
           none of it is grounded in a face the model actually resolved.
         </p>
         <p>
-          Underneath that, the model predicts a categorical race label from appearance. Its accuracy is not evenly
+          Underneath that, the model predicts a categorical ethnicity label from appearance. Its accuracy is not evenly
           distributed across the groups it claims to distinguish, its categories are the ones its training set
           happened to use, and there is no threshold at which a wrong label here is harmless. Counting footfall is a
           reasonable thing to automate. Sorting people into racial categories from CCTV is not the same kind of task,
@@ -164,7 +165,7 @@
         <!-- TODO(Idris): the repo has video.mp4 and three stills, but they show identifiable
              faces. Before putting any of them on a public page: crop to the counting overlay,
              blur faces, or re-record a clip with people who have agreed to appear. Given the
-             page discusses a race classifier, showing real faces alongside it is worse than
+             page discusses an ethnicity classifier, showing real faces alongside it is worse than
              showing nothing. A short GIF of boxes, IDs and the running tally is enough. -->
         <p class="placeholder-note">
           To add: a short clip of the counting overlay — boxes, track IDs and the running in/out tally. Faces cropped
@@ -189,8 +190,8 @@
 
       <nav class="project-next" aria-label="More work">
         <p>Next project</p>
-        <a href="../awkum-assistant/index.html">
-          <span>Teaching Llama 2 to answer questions about one university</span>
+        <a href="../hand-gesture-recognition/index.html">
+          <span>Recognising hand signs from a webcam in real time</span>
           <span aria-hidden="true">→</span>
         </a>
       </nav>

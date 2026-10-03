@@ -12,8 +12,6 @@
     content="Practical AI work, an honest learning journey, and selected projects from Idris Khattak.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://idriskhattak.github.io/Idris_Portfolio/">
-  <!-- TODO(Idris): add og-image.png (1200x630) to the repo root. Without it, every
-       LinkedIn and Slack share of this link renders as a blank grey card. -->
   <meta property="og:image" content="https://idriskhattak.github.io/Idris_Portfolio/og-image.png">
   <meta property="og:image:alt" content="Idris Khattak — Applied AI master's student in Oslo">
   <meta name="twitter:card" content="summary_large_image">
@@ -93,7 +91,7 @@
         <header class="section-heading">
           <p class="section-kicker">01 / Selected work</p>
           <div>
-            <h2>Four projects, including the parts that did not work.</h2>
+            <h2>Five projects, including the parts that did not work.</h2>
             <p>Each one lists what I actually measured. Where a project has no numbers yet, it says so.</p>
           </div>
         </header>
@@ -154,12 +152,39 @@
           </div>
         </article>
 
+
         <ol class="work-index">
+          <li class="work-item">
+            <p class="work-year">2026</p>
+            <div class="work-body">
+              <h3>Human Insight AI: one video interface for five detectors</h3>
+              <p>A Flask app that runs several vision models over an uploaded video behind one interface. Each
+                detector returns the same prediction shape, so the streaming pipeline does not care which is
+                selected.</p>
+            </div>
+            <p class="work-stack">Flask · OpenCV · YOLO</p>
+            <p class="work-status"><a class="work-link" href="https://github.com/idriskhattak/AI-System"
+                target="_blank" rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a></p>
+          </li>
+
           <li class="work-item">
             <p class="work-year">2024</p>
             <div class="work-body">
-              <h3><a href="projects/people-counting/index.html">Counting people in video, then deciding not to ship half
-                  of it</a></h3>
+              <h3><a href="projects/fingerprint-reconstruction/index.html">Reconstructing a complete fingerprint
+                  from a partial image</a></h3>
+              <p>A GAN trained on SOCOFing. Average SSIM 0.64 across two runs — moderate structural similarity, and
+                the discriminator still spots most reconstructions as fake.</p>
+            </div>
+            <p class="work-stack">PyTorch · OpenCV</p>
+            <p class="work-status"><a class="work-link" href="projects/fingerprint-reconstruction/index.html">Case
+                study <span aria-hidden="true">→</span></a></p>
+          </li>
+
+          <li class="work-item">
+            <p class="work-year">2024</p>
+            <div class="work-body">
+              <h3><a href="projects/people-counting/index.html">Counting people in video, then deciding not to ship
+                  half of it</a></h3>
               <p>YOLOv8 tracking with line-crossing counts. The second half of the brief was a race classifier, and
                 I wrote up why it should not be deployed.</p>
             </div>
@@ -169,41 +194,27 @@
           </li>
 
           <li class="work-item">
-            <p class="work-year">2024</p>
-            <div class="work-body">
-              <h3>Full fingerprint reconstruction</h3>
-              <p>Reconstructing a complete fingerprint from a partial image, with most of the effort going into
-                preprocessing.
-                <!-- TODO(Idris): replace with the real one-liner — architecture, dataset + size,
-                     and the metric you measured (SSIM? PSNR?). Then add a page under
-                     projects/fingerprint-reconstruction/ and link the title. -->
-              </p>
-            </div>
-            <p class="work-stack">PyTorch · OpenCV</p>
-            <p class="work-status">Write-up pending</p>
-          </li>
-
-          <li class="work-item">
             <p class="work-year">2023</p>
             <div class="work-body">
-              <h3>Hand gesture recognition</h3>
-              <p>A real-time recognition pipeline, including the data collection nobody puts in the demo video.
-                <!-- TODO(Idris): replace with the real one-liner — how many gesture classes, how
-                     many samples, accuracy, FPS. Then add a page and link the title. -->
-              </p>
+              <h3><a href="projects/hand-gesture-recognition/index.html">Recognising hand signs from a webcam in
+                  real time</a></h3>
+              <p>MediaPipe landmarks into a Random Forest over 8 sign classes. 100% on the held-out split, which
+                says more about the split than the classifier.</p>
             </div>
-            <p class="work-stack">OpenCV · MediaPipe</p>
-            <p class="work-status">Write-up pending</p>
+            <p class="work-stack">OpenCV · MediaPipe · scikit-learn</p>
+            <p class="work-status"><a class="work-link" href="projects/hand-gesture-recognition/index.html">Case
+                study <span aria-hidden="true">→</span></a></p>
           </li>
 
           <li class="work-item work-item-active">
             <p class="work-year">Now</p>
             <div class="work-body">
-              <h3>Retrieval over real documents</h3>
-              <p>Rebuilding the university assistant the way it should have been done: retrieval over source
-                documents instead of a fine-tune, with an evaluation set I can measure against.</p>
+              <h3>Improving my LLM-RAG assistant</h3>
+              <p>Improving my portfolio assistant with a production-minded RAG pipeline: FastAPI searches structured
+                Markdown knowledge with FAISS and all-MiniLM-L6-v2 embeddings, then uses OpenAI gpt-oss-20b through
+                Groq to generate grounded, useful answers without exposing private credentials.</p>
             </div>
-            <p class="work-stack">Retrieval · evaluation</p>
+            <p class="work-stack">gpt-oss-20b · RAG · FAISS · FastAPI</p>
             <p class="work-status"><span class="work-dot"></span> In progress</p>
           </li>
         </ol>
@@ -272,7 +283,7 @@
           </div>
           <div>
             <dt>Ultralytics YOLOv8 · OpenCV · DeepFace</dt>
-            <dd>Tracking and counting people in video for my <a href="#work">final-year project</a></dd>
+            <dd>Human counting and ethnicity detection for my <a href="#work">final-year project</a></dd>
           </div>
           <div>
             <dt>Python · Pandas · NumPy · scikit-learn</dt>
@@ -320,7 +331,7 @@
             <div>
               <h3>Freelance and self-directed work</h3>
               <p class="institution">Pakistan</p>
-              <p><em class="todo-note">Placeholder — describe this period in one or two honest sentences.</em></p>
+              <p>Worked as a freelancer across AI projects, while helping Loomlan improve its Shopify store design and build web-scraping workflows.</p>
             </div>
           </article>
 

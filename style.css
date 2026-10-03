@@ -525,24 +525,6 @@ h3 {
   margin-top: 28px;
 }
 
-/* Second featured card: same structure, darker surface, so the section reads
-   as two cases rather than one case repeated. */
-
-.case-study-dark {
-  background: var(--ink);
-}
-
-.case-study-dark .case-meta span,
-.case-study-dark .case-details dt,
-.case-study-dark .spec-list dt {
-  color: var(--sun);
-}
-
-.case-study-dark .system-map {
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.04);
-}
-
 .case-meta {
   margin-bottom: 24px;
   color: rgba(255, 255, 255, 0.8);
@@ -1756,6 +1738,25 @@ footer {
   padding: 0;
   background: none;
   font-size: inherit;
+}
+
+.project-figure {
+  margin: 32px 0 42px;
+}
+
+.project-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.project-figure figcaption {
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
 .step-list {

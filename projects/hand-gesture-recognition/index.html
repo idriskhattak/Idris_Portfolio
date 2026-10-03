@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="A real-time hand-sign recognition pipeline using MediaPipe landmarks, a Random Forest classifier, and OpenCV webcam inference.">
+  <meta name="theme-color" content="#f2efe6">
+  <meta property="og:title" content="Real-time hand-sign recognition — Idris Khattak">
+  <meta property="og:description"
+    content="MediaPipe hand landmarks and a Random Forest classifier for eight webcam-recognized sign labels.">
+  <meta property="og:type" content="article">
+  <meta property="og:url"
+    content="https://idriskhattak.github.io/Idris_Portfolio/projects/hand-gesture-recognition/">
+  <meta property="og:image"
+    content="https://idriskhattak.github.io/Idris_Portfolio/projects/hand-gesture-recognition/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://idriskhattak.github.io/Idris_Portfolio/projects/hand-gesture-recognition/">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2319201c'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Arial' font-weight='700' fill='%23f2efe6'%3EIK%3C/text%3E%3C/svg%3E">
+  <title>Real-time hand-sign recognition — Idris Khattak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary navigation">
+      <a class="brand" href="../../index.html" aria-label="IK — Idris Khattak, home">
+        <span class="brand-mark">IK</span>
+        <span class="brand-name">Idris Khattak</span>
+      </a>
+
+      <button class="menu-btn" type="button" aria-label="Open navigation" aria-controls="primary-links"
+        aria-expanded="false">
+        <span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="primary-links">
+        <a href="../../index.html#work">Work</a>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#journey">Journey</a>
+        <a href="../../index.html#credentials">Credentials</a>
+        <a class="nav-external" href="https://github.com/idriskhattak" target="_blank" rel="noopener noreferrer">
+          GitHub <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="../../index.html#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="project-page">
+    <div class="container">
+      <a class="back-link" href="../../index.html#work"><span aria-hidden="true">←</span> All work</a>
+
+      <header class="project-hero">
+        <p class="section-kicker">Real-time sign recognition · 2023</p>
+        <h1>Recognizing hand signs from a webcam in real time.</h1>
+        <p class="project-lead">
+          I built a webcam pipeline that detects a hand, converts its landmarks into normalized features, and predicts
+          a sign label with a Random Forest classifier. The result is drawn live with OpenCV.
+        </p>
+
+        <dl class="fact-strip">
+          <div><dt>Role</dt><dd>Solo, self-directed</dd></div>
+          <div><dt>Stack</dt><dd>Python · OpenCV · MediaPipe</dd></div>
+          <div><dt>Classes</dt><dd>8 sign labels</dd></div>
+          <div><dt>Status</dt><dd>Prototype, evaluated</dd></div>
+        </dl>
+
+        <div class="project-actions">
+          <a class="btn btn-dark" href="https://github.com/idriskhattak/Hand-Gesture-Recognition" target="_blank"
+            rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a>
+          <a class="text-link"
+            href="https://github.com/idriskhattak/Hand-Gesture-Recognition/blob/main/Sign-Language-Detection/Main.ipynb"
+            target="_blank" rel="noopener noreferrer">The notebook <span aria-hidden="true">↗</span></a>
+          <a class="text-link"
+            href="https://github.com/idriskhattak/Hand-Gesture-Recognition/blob/main/Sign-Language-Detection/inference_classifier.py"
+            target="_blank" rel="noopener noreferrer">Inference code <span aria-hidden="true">↗</span></a>
+        </div>
+      </header>
+
+      <div class="prose">
+        <h2>The problem</h2>
+        <p>
+          Recognizing a hand sign from a live camera feed requires more than a classifier. The pipeline has to find
+          the hand, represent it consistently as the hand moves around the frame, and return a label quickly enough
+          for the result to feel live.
+        </p>
+
+        <h2>What I built</h2>
+        <p>
+          The project uses MediaPipe Hands to detect one hand and return 21 landmarks. The x and y coordinates are
+          normalized by subtracting the minimum coordinate, producing 42 features that are less sensitive to where the
+          hand appears in the frame.
+        </p>
+        <p>
+          A scikit-learn Random Forest is trained on those landmark vectors. During inference, OpenCV captures the
+          webcam frame, MediaPipe draws the hand skeleton, and the classifier's label is displayed above the detected
+          hand.
+        </p>
+
+        <h2>The numbers</h2>
+        <p>
+          These are the values printed by the repository's training notebook:
+        </p>
+
+        <table class="results-table">
+          <caption>Training and evaluation results</caption>
+          <tbody>
+            <tr><th scope="row">Input representation</th><td>42 normalized x/y landmark features</td></tr>
+            <tr><th scope="row">Classifier</th><td>Scikit-learn Random Forest</td></tr>
+            <tr><th scope="row">Classes</th><td>8 sign labels</td></tr>
+            <tr><th scope="row">Test split</th><td>20%, stratified and shuffled</td></tr>
+            <tr><th scope="row">Reported accuracy</th><td>100.00% of held-out samples</td></tr>
+            <tr><th scope="row">Data cleaning</th><td>Invalid 84-length samples skipped; 42-length vectors retained</td></tr>
+          </tbody>
+        </table>
+
+        <p class="callout">
+          The 100.00% figure is the notebook's single held-out split, not a guarantee of real-world performance. The
+          repository does not report cross-validation, a separate test recording, confusion between similar signs, or
+          webcam performance such as FPS and latency.
+        </p>
+
+        <h2>What went wrong</h2>
+        <p>
+          The evaluation is useful but narrow. A random split can be optimistic when samples from the same collection
+          session appear in both training and test data. The live application also assumes one visible hand and uses
+          a fixed label mapping, so changes in lighting, pose, background, or hand orientation may reduce reliability.
+        </p>
+
+        <h2>What I would do differently</h2>
+        <p>
+          I would collect separate recordings for training and testing, report a confusion matrix for each sign, and
+          measure FPS and end-to-end latency on the target machine. I would also add an explicit unknown or low
+          confidence state rather than forcing every detected hand into one of the eight labels.
+        </p>
+        <p>
+          The complete implementation is available in the
+          <a href="https://github.com/idriskhattak/Hand-Gesture-Recognition/tree/main/Sign-Language-Detection"
+            target="_blank" rel="noopener noreferrer">Sign-Language-Detection project folder</a>.
+        </p>
+      </div>
+
+      <nav class="project-next" aria-label="More work">
+        <p>Next project</p>
+        <a href="../awkum-assistant/index.html">
+          <span>Teaching Llama 2 to answer questions about one university</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-layout">
+      <p>© <span id="year"></span> Idris Khattak</p>
+      <p>Applied AI · Oslo, Norway</p>
+      <a href="../../index.html">Back to portfolio ↑</a>
+    </div>
+  </footer>
+
+  <script src="../../script.js" defer></script>
+</body>
+
+</html>

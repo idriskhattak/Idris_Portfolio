@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Share card template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* Each .card renders at exactly 1200x630 — the Open Graph standard.
+       Screenshot one and save it as the matching og-image.png.
+       See tools/README.md. */
+
+    :root {
+      --paper: #f2efe6;
+      --paper-light: #fbf9f3;
+      --ink: #19201c;
+      --ink-soft: #4f5852;
+      --forest: #215f4c;
+      --clay: #a7442e;
+      --sun: #e9b949;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: flex-start;
+      background: #d8d3c6;
+      font-family: "DM Sans", system-ui, sans-serif;
+    }
+
+    .card {
+      position: relative;
+      width: 1200px;
+      height: 630px;
+      padding: 76px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .card-forest { background: var(--forest); color: var(--paper-light); }
+    .card-ink { background: var(--ink); color: var(--paper-light); }
+
+    /* Faint concentric rings, echoing the site hero */
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -180px;
+      top: -120px;
+      width: 520px;
+      height: 520px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      opacity: 0.12;
+      box-shadow: 0 0 0 80px rgba(127, 127, 127, 0.05);
+    }
+
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .mark i {
+      display: grid;
+      width: 54px;
+      height: 54px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--paper-light);
+      font-size: 19px;
+      font-style: normal;
+    }
+
+    .card-forest .mark i,
+    .card-ink .mark i {
+      background: var(--paper-light);
+      color: var(--ink);
+    }
+
+    .kicker {
+      margin: 0 0 24px;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--clay);
+    }
+
+    .card-forest .kicker { color: #9fe3c6; }
+    .card-ink .kicker { color: var(--sun); }
+
+    h1 {
+      max-width: 20ch;
+      margin: 0;
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 500;
+      font-size: 76px;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+    }
+
+    h1.small { font-size: 62px; max-width: 18ch; }
+
+    h1 em { color: var(--clay); font-style: italic; }
+
+    .tagline {
+      margin: 26px 0 0;
+      max-width: 44ch;
+      font-size: 25px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .card-forest .tagline,
+    .card-ink .tagline { color: rgba(255, 255, 255, 0.78); }
+
+    .foot {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 52px;
+    }
+
+    .stats div { line-height: 1.25; }
+
+    .stats dt {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.72;
+    }
+
+    .stats dd {
+      margin: 6px 0 0;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 34px;
+      letter-spacing: -0.02em;
+    }
+
+    .site {
+      font-size: 19px;
+      font-weight: 600;
+      opacity: 0.75;
+    }
+
+    .body { position: relative; z-index: 1; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Root: index.html -> og-image.png ===== -->
+  <section class="card" id="card-home">
+    <div class="mark"><i>IK</i> Idris Khattak</div>
+    <div class="body">
+      <h1>The model is <em>the easy part.</em></h1>
+      <p class="tagline">Applied AI master's student in Oslo. Fine-tuning, the pipelines around it, and honest
+        write-ups of what the results support.</p>
+    </div>
+    <div class="foot">
+      <dl class="stats">
+        <div><dt>Focus</dt><dd>LLMs &amp; computer vision</dd></div>
+        <div><dt>Based in</dt><dd>Oslo, Norway</dd></div>
+      </dl>
+      <span class="site">idriskhattak.github.io</span>
+    </div>
+  </section>
+
+  <!-- ===== projects/awkum-assistant/og-image.png ===== -->
+  <section class="card card-forest" id="card-awkum">
+    <div class="mark"><i>IK</i> Idris Khattak</div>
+    <div class="body">
+      <p class="kicker">Fine-tuning study · 2025</p>
+      <h1 class="small">Teaching Llama 2 to answer questions about one university.</h1>
+    </div>
+    <div class="foot">
+      <dl class="stats">
+        <div><dt>Dataset</dt><dd>41 pairs</dd></div>
+        <div><dt>Training</dt><dd>11 steps</dd></div>
+        <div><dt>Final loss</dt><dd>3.76</dd></div>
+      </dl>
+      <span class="site">Case study ↗</span>
+    </div>
+  </section>
+
+  <!-- ===== projects/fingerprint-reconstruction/og-image.png ===== -->
+  <section class="card card-forest" id="card-fingerprint">
+    <div class="mark"><i>IK</i> Idris Khattak</div>
+    <div class="body">
+      <p class="kicker">Generative reconstruction · 2024</p>
+      <h1 class="small">Reconstructing a complete fingerprint from a partial image.</h1>
+    </div>
+    <div class="foot">
+      <dl class="stats">
+        <div><dt>Model</dt><dd>GAN, PyTorch</dd></div>
+        <div><dt>Dataset</dt><dd>SOCOFing</dd></div>
+        <div><dt>Avg SSIM</dt><dd>0.64</dd></div>
+      </dl>
+      <span class="site">Case study ↗</span>
+    </div>
+  </section>
+
+  <!-- ===== projects/hand-gesture-recognition/og-image.png ===== -->
+  <section class="card card-ink" id="card-gesture">
+    <div class="mark"><i>IK</i> Idris Khattak</div>
+    <div class="body">
+      <p class="kicker">Real-time sign recognition · 2023</p>
+      <h1 class="small">Recognising hand signs from a webcam in real time.</h1>
+    </div>
+    <div class="foot">
+      <dl class="stats">
+        <div><dt>Landmarks</dt><dd>MediaPipe, 21 points</dd></div>
+        <div><dt>Classes</dt><dd>8 signs</dd></div>
+        <div><dt>Held-out split</dt><dd>100%</dd></div>
+      </dl>
+      <span class="site">Case study ↗</span>
+    </div>
+  </section>
+
+  <!-- ===== projects/people-counting/og-image.png ===== -->
+  <section class="card card-ink" id="card-counting">
+    <div class="mark"><i>IK</i> Idris Khattak</div>
+    <div class="body">
+      <p class="kicker">Final-year project · 2024</p>
+      <h1 class="small">Counting people in video, then deciding not to ship half of it.</h1>
+    </div>
+    <div class="foot">
+      <dl class="stats">
+        <div><dt>Detection</dt><dd>YOLOv8n</dd></div>
+        <div><dt>Tracking</dt><dd>Persistent IDs</dd></div>
+        <div><dt>Shipped</dt><dd>Half of it</dd></div>
+      </dl>
+      <span class="site">Case study ↗</span>
+    </div>
+  </section>
+
+</body>
+
+</html>
