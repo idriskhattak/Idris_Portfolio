@@ -93,8 +93,8 @@
         <header class="section-heading">
           <p class="section-kicker">01 / Selected work</p>
           <div>
-            <h2>Selected Projects &amp; Case Studies</h2>
-            <p>Explore some of my practical AI projects in language, computer vision, and generative systems, along with the methods, results, and lessons behind each one.</p>
+            <h2>Five projects, including the parts that did not work.</h2>
+            <p>Each one lists what I actually measured. Where a project has no numbers yet, it says so.</p>
           </div>
         </header>
 
@@ -154,232 +154,60 @@
           </div>
         </article>
 
-        <article class="case-study">
-          <div class="case-copy">
-            <p class="case-meta"><span>Generative reconstruction</span> · 2024</p>
-            <h3>Reconstructing a complete fingerprint from a partial image.</h3>
-            <p class="case-lead">
-              This project uses a Generative Adversarial Network to recover missing fingerprint information from
-              partial images. The generator learns to reconstruct the missing detail while the discriminator learns
-              to distinguish generated fingerprints from real ones.
-            </p>
-            <p class="case-lead">
-              Most of the practical work was in preprocessing and building a reproducible training workflow. The
-              notebook covers dataset preparation, GAN training, image generation, model saving and loading, and
-              evaluation rather than stopping at a generated example.
-            </p>
-
-            <dl class="case-details">
-              <div>
-                <dt>Architecture</dt>
-                <dd>Generative Adversarial Network with a generator and discriminator</dd>
-              </div>
-              <div>
-                <dt>Dataset</dt>
-                <dd><a href="https://www.kaggle.com/datasets/ruizgara/socofing/data" target="_blank"
-                    rel="noopener noreferrer">SOCOFing fingerprint dataset</a></dd>
-              </div>
-              <div>
-                <dt>Implementation</dt>
-                <dd>Python and PyTorch, with GPU acceleration when CUDA is available</dd>
-              </div>
-              <div>
-                <dt>Evaluation</dt>
-                <dd>SSIM 0.6421 · real discriminator 99.28%</dd>
-              </div>
-              <div>
-                <dt>Generated-image result</dt>
-                <dd>Fake-image discriminator accuracy 91.57%</dd>
-              </div>
-            </dl>
-
-            <div class="case-actions">
-              <a class="btn btn-light" href="projects/fingerprint-reconstruction/index.html">Read the case study
-                <span aria-hidden="true">→</span></a>
-              <a class="text-link light-link" href="https://github.com/idriskhattak/Full-FingerPrint-Reconsturction"
-                target="_blank" rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-
-          <div class="system-map">
-            <div class="map-heading">
-              <span>Reconstruction configuration</span>
-            </div>
-            <dl class="spec-list">
-              <div><dt>Model</dt><dd>GAN</dd></div>
-              <div><dt>Input</dt><dd>Partial fingerprint images</dd></div>
-              <div><dt>Output</dt><dd>Reconstructed full fingerprints</dd></div>
-              <div><dt>Metrics</dt><dd>SSIM · discriminator accuracy</dd></div>
-              <div><dt>Framework</dt><dd>PyTorch</dd></div>
-            </dl>
-          </div>
-        </article>
-
-        <article class="case-study">
-          <div class="case-copy">
-            <p class="case-meta"><span>Computer vision project</span> · 2024</p>
-            <h3>Human Counting and Ethnicity Detection.</h3>
-            <p class="case-lead">
-              This project combines YOLOv8 detection and tracking with a video pipeline that counts people crossing a
-              defined region. Persistent track IDs make it possible to count entries and exits without counting the
-              same person once per frame.
-            </p>
-            <p class="case-lead">
-              I also implemented an ethnicity-detection experiment using DeepFace. The counting pipeline is a useful
-              computer-vision task; the demographic classifier is not something I would deploy, so the case study
-              documents both what worked and why I rejected part of the brief.
-            </p>
-
-            <dl class="case-details">
-              <div>
-                <dt>Detector</dt>
-                <dd>YOLOv8n with persistent tracking IDs</dd>
-              </div>
-              <div>
-                <dt>Counting</dt>
-                <dd>Four-point entry and exit region across the video frame</dd>
-              </div>
-              <div>
-                <dt>Attribute model</dt>
-                <dd>DeepFace ethnicity action, evaluated as an experiment only</dd>
-              </div>
-              <div>
-                <dt>Evaluation</dt>
-                <dd>Pretrained models; no project-level benchmark</dd>
-              </div>
-            </dl>
-
-            <div class="case-actions">
-              <a class="btn btn-light" href="projects/people-counting/index.html">Read the case study
-                <span aria-hidden="true">→</span></a>
-              <a class="text-link light-link" href="https://github.com/idriskhattak/Human-Counting" target="_blank"
-                rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-
-          <div class="system-map">
-            <div class="map-heading">
-              <span>Video pipeline</span>
-            </div>
-            <dl class="spec-list">
-              <div><dt>Detection</dt><dd>YOLOv8n · COCO weights</dd></div>
-              <div><dt>Tracking</dt><dd>Persistent IDs and trails</dd></div>
-              <div><dt>Input</dt><dd>Recorded 1080-wide video</dd></div>
-              <div><dt>Counting</dt><dd>In · out · total crossings</dd></div>
-              <div><dt>Evaluation</dt><dd>No labelled test set or accuracy report</dd></div>
-            </dl>
-          </div>
-        </article>
-
-        <article class="case-study">
-          <div class="case-copy">
-            <p class="case-meta"><span>Real-time sign recognition</span> · 2023</p>
-            <h3>Recognizing hand signs from a webcam in real time.</h3>
-            <p class="case-lead">
-              This project turns webcam frames into hand-landmark features with MediaPipe, then classifies the
-              normalized coordinates with a Random Forest model. OpenCV draws the landmarks, bounding box, and
-              predicted sign back onto the live frame.
-            </p>
-            <p class="case-lead">
-              The training notebook collects and filters the landmark data, trains the classifier, and evaluates it
-              on a held-out split before saving the model for live inference.
-            </p>
-
-            <dl class="case-details">
-              <div>
-                <dt>Input</dt>
-                <dd>Webcam frames with one detected hand</dd>
-              </div>
-              <div>
-                <dt>Features</dt>
-                <dd>42 normalized x/y hand-landmark coordinates</dd>
-              </div>
-              <div>
-                <dt>Classifier</dt>
-                <dd>Scikit-learn Random Forest</dd>
-              </div>
-              <div>
-                <dt>Evaluation</dt>
-                <dd>100.00% on the notebook's 20% held-out split</dd>
-              </div>
-            </dl>
-
-            <div class="case-actions">
-              <a class="btn btn-light" href="projects/hand-gesture-recognition/index.html">Read the case study
-                <span aria-hidden="true">→</span></a>
-              <a class="text-link light-link" href="https://github.com/idriskhattak/Hand-Gesture-Recognition"
-                target="_blank" rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-
-          <div class="system-map">
-            <div class="map-heading">
-              <span>Recognition pipeline</span>
-            </div>
-            <dl class="spec-list">
-              <div><dt>Detection</dt><dd>MediaPipe Hands</dd></div>
-              <div><dt>Classes</dt><dd>8 sign labels</dd></div>
-              <div><dt>Features</dt><dd>42 normalized coordinates</dd></div>
-              <div><dt>Model</dt><dd>Random Forest</dd></div>
-              <div><dt>Interface</dt><dd>OpenCV webcam window</dd></div>
-            </dl>
-          </div>
-        </article>
-
-        <article class="case-study">
-          <div class="case-copy">
-            <p class="case-meta"><span>Multi-model video analysis</span> · Oct 2026</p>
-            <h3>Human Insight AI: one video interface for five detectors.</h3>
-            <p class="case-lead">
-              Human Insight AI is a Flask application for uploading a video and switching between several computer
-              vision models without changing the interface. It can track people, classify gender and ethnicity, detect
-              fire, and run a fight-detection model, returning annotated frames through a live MJPEG stream.
-            </p>
-            <p class="case-lead">
-              The interesting engineering decision is the model factory: each detector exposes the same prediction
-              shape to the streaming pipeline, while the fight model gets a separate full-video path. It is a useful
-              systems prototype, but not a production deployment yet—the repository has no benchmark suite, and the
-              fire detector still depends on a machine-specific YOLOv5 path.
-            </p>
-
-            <dl class="case-details">
-              <div>
-                <dt>Interface</dt>
-                <dd>Flask upload flow with model-selection controls</dd>
-              </div>
-              <div>
-                <dt>Models</dt>
-                <dd>Human, gender, ethnicity, fire, and fight detectors</dd>
-              </div>
-              <div>
-                <dt>Video path</dt>
-                <dd>OpenCV frame processing with MJPEG streaming</dd>
-              </div>
-            </dl>
-
-            <div class="case-actions">
-              <a class="btn btn-light" href="https://github.com/idriskhattak/AI-System" target="_blank"
-                rel="noopener noreferrer">View the system <span aria-hidden="true">↗</span></a>
-              <a class="text-link light-link" href="https://github.com/idriskhattak/AI-System/tree/main/detectors"
-                target="_blank" rel="noopener noreferrer">Explore the detectors <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-
-          <div class="system-map">
-            <div class="map-heading">
-              <span>Analysis pipeline</span>
-            </div>
-            <dl class="spec-list">
-              <div><dt>Backend</dt><dd>Flask · Python</dd></div>
-              <div><dt>Input</dt><dd>Uploaded video files</dd></div>
-              <div><dt>Detection</dt><dd>YOLO and custom model adapters</dd></div>
-              <div><dt>Output</dt><dd>Annotated MJPEG stream</dd></div>
-              <div><dt>Special path</dt><dd>Full-video fight inference</dd></div>
-            </dl>
-          </div>
-        </article>
 
         <ol class="work-index">
+          <li class="work-item">
+            <p class="work-year">2026</p>
+            <div class="work-body">
+              <h3>Human Insight AI: one video interface for five detectors</h3>
+              <p>A Flask app that runs several vision models over an uploaded video behind one interface. Each
+                detector returns the same prediction shape, so the streaming pipeline does not care which is
+                selected.</p>
+            </div>
+            <p class="work-stack">Flask · OpenCV · YOLO</p>
+            <p class="work-status"><a class="work-link" href="https://github.com/idriskhattak/AI-System"
+                target="_blank" rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a></p>
+          </li>
+
+          <li class="work-item">
+            <p class="work-year">2024</p>
+            <div class="work-body">
+              <h3><a href="projects/fingerprint-reconstruction/index.html">Reconstructing a complete fingerprint
+                  from a partial image</a></h3>
+              <p>A GAN trained on SOCOFing. Average SSIM 0.64 across two runs — moderate structural similarity, and
+                the discriminator still spots most reconstructions as fake.</p>
+            </div>
+            <p class="work-stack">PyTorch · OpenCV</p>
+            <p class="work-status"><a class="work-link" href="projects/fingerprint-reconstruction/index.html">Case
+                study <span aria-hidden="true">→</span></a></p>
+          </li>
+
+          <li class="work-item">
+            <p class="work-year">2024</p>
+            <div class="work-body">
+              <h3><a href="projects/people-counting/index.html">Counting people in video, then deciding not to ship
+                  half of it</a></h3>
+              <p>YOLOv8 tracking with line-crossing counts. The second half of the brief was a race classifier, and
+                I wrote up why it should not be deployed.</p>
+            </div>
+            <p class="work-stack">YOLOv8 · OpenCV · DeepFace</p>
+            <p class="work-status"><a class="work-link" href="projects/people-counting/index.html">Case study <span
+                  aria-hidden="true">→</span></a></p>
+          </li>
+
+          <li class="work-item">
+            <p class="work-year">2023</p>
+            <div class="work-body">
+              <h3><a href="projects/hand-gesture-recognition/index.html">Recognising hand signs from a webcam in
+                  real time</a></h3>
+              <p>MediaPipe landmarks into a Random Forest over 8 sign classes. 100% on the held-out split, which
+                says more about the split than the classifier.</p>
+            </div>
+            <p class="work-stack">OpenCV · MediaPipe · scikit-learn</p>
+            <p class="work-status"><a class="work-link" href="projects/hand-gesture-recognition/index.html">Case
+                study <span aria-hidden="true">→</span></a></p>
+          </li>
+
           <li class="work-item work-item-active">
             <p class="work-year">Now</p>
             <div class="work-body">
