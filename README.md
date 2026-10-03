@@ -33,20 +33,24 @@ what went wrong, example runs, what I would do differently.
 ## Assets still missing
 Referenced by the pages but not in the repo:
 
-- `og-image.png` (1200×630) — without it, LinkedIn shares render as a blank card
-- `projects/awkum-assistant/og-image.png`, `projects/people-counting/og-image.png`
 - `cv.pdf` — linked from the contact section
 - `portrait.jpg` (square, 600px+) — markup is in `index.html`, commented out
+
+Share cards are generated from `tools/og-template.html`; see `tools/README.md`.
 
 ## Content still to fill
 Search for `TODO(Idris)`:
 
-- Example runs on both project pages
+- Example runs on the AWKUM and people-counting pages
 - The 2024–2026 gap in the timeline
 - Confirm the internship term in the contact section
 
 ## Next improvements
 - Add figures to the hand gesture case study
+- Give Human Insight AI its own page, and reconcile its ethnicity detector with the
+  argument against one on the people-counting page
+- Present the Fiverr house-visibility classifier — the only paid client work
+- Add a share card for any new project (`tools/og-template.html`)
 - Add an evaluation set to the university assistant rebuild
 - Re-index the chat assistant's corpus so it covers the project pages
 - Deploy to GitHub Pages, Vercel, or Netlify
