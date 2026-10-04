@@ -30,10 +30,9 @@ decides whether anyone clicks through.
 Page sections, in the order they get read: the problem, what I built, the numbers,
 what went wrong, example runs, what I would do differently.
 
-## Assets still missing
-Referenced by the pages but not in the repo:
+## Assets
 
-- `cv.pdf`, linked from the contact section
+- `assets/Idris-Resume.pdf`, linked from the contact section as the downloadable CV
 
 Share cards are generated from `tools/og-template.html`; see `tools/README.md`.
 
@@ -41,7 +40,6 @@ Share cards are generated from `tools/og-template.html`; see `tools/README.md`.
 Search for `TODO(Idris)`:
 
 - Confirm the internship term in the contact section
-- `cv.pdf`
 
 ## Next improvements
 - Blurred/cropped counting overlay still or GIF (faces must stay off the page)
