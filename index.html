@@ -167,6 +167,7 @@
             <div class="work-body">
               <h3>Human Insight AI: one video interface for five detectors</h3>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <p>A Flask app (<code>main-app.py</code>) that runs several vision models over an uploaded video behind
                 one interface. Each detector is its own module (<code>human</code>, <code>fire</code>, <code>gender</code>,
                 <code>ethnicity</code>, <code>fight</code>) and they all return the same prediction shape, so the
@@ -181,6 +182,14 @@
 >>>>>>> 273bc59 (Restore the single featured card and move the new projects into the work index)
 =======
                 selected. Two of those detectors classify gender and ethnicity, and I would drop both for the
+=======
+              <p>A Flask app (<code>main-app.py</code>) that runs several vision models over an uploaded video behind
+                one interface. Detectors live as separate modules —
+                <code>human</code>, <code>fire</code>, <code>gender</code>, <code>ethnicity</code>,
+                <code>fight</code> — and each returns the same prediction shape, so the streaming pipeline does not
+                care which is selected. Fight detection is the exception: it needs the whole clip. I would drop gender
+                and ethnicity for the
+>>>>>>> b228533 (Add documented example runs to the project case studies)
                 <a href="projects/people-counting/index.html">reasons set out here</a>.</p>
 >>>>>>> badb133 (Present the paid client work and own the demographic detectors in Human Insight AI)
             </div>

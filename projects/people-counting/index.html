@@ -162,15 +162,28 @@
         </p>
 
         <h2>Example runs</h2>
-        <!-- TODO(Idris): the repo has video.mp4 and three stills, but they show identifiable
-             faces. Before putting any of them on a public page: crop to the counting overlay,
-             blur faces, or re-record a clip with people who have agreed to appear. Given the
-             page discusses an ethnicity classifier, showing real faces alongside it is worse than
-             showing nothing. A short GIF of boxes, IDs and the running tally is enough. -->
-        <p class="placeholder-note">
-          To add: a short clip of the counting overlay — boxes, track IDs and the running in/out tally. Faces cropped
-          or blurred.
+        <p>
+          The repository contains annotated output videos under
+          <a href="https://github.com/idriskhattak/Human-Counting/tree/main/Human-Counting-and-Ethnicity/Test%20and%20Results"
+            target="_blank" rel="noopener noreferrer">Test and Results</a>
+          (<code>human_counting_video.avi</code>, <code>combined_video.avi</code>). I am not embedding stills here:
+          the footage shows identifiable faces, and this page already discusses an ethnicity classifier.
         </p>
+
+        <article class="example-run">
+          <p class="example-kicker">What a counting run looks like</p>
+          <p>On a recorded 1080-wide clip the pipeline writes an annotated video with:</p>
+          <ul class="step-list">
+            <li>YOLOv8 person boxes and persistent track IDs</li>
+            <li>Short motion trails used while debugging the tracker</li>
+            <li>A shallow counting band across the frame (<code>region_points = [(20, 400), (1080, 404), (1080, 360), (20, 360)]</code>)</li>
+            <li>Separate running tallies for entries and exits as IDs cross that band</li>
+          </ul>
+          <p>
+            That is a demo of the overlay, not a measured accuracy result. No hand-labelled minute of footage was
+            scored against these counts.
+          </p>
+        </article>
 
         <h2>What I would do differently</h2>
         <p>
