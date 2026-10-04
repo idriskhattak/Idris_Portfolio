@@ -184,10 +184,9 @@
                 selected. Two of those detectors classify gender and ethnicity, and I would drop both for the
 =======
               <p>A Flask app (<code>main-app.py</code>) that runs several vision models over an uploaded video behind
-                one interface. Detectors live as separate modules —
-                <code>human</code>, <code>fire</code>, <code>gender</code>, <code>ethnicity</code>,
-                <code>fight</code> — and each returns the same prediction shape, so the streaming pipeline does not
-                care which is selected. Fight detection is the exception: it needs the whole clip. I would drop gender
+                one interface. Each detector is its own module (<code>human</code>, <code>fire</code>, <code>gender</code>,
+                <code>ethnicity</code>, <code>fight</code>) and they all return the same prediction shape, so the
+                streaming pipeline does not care which one is selected. Fight detection is the exception: it needs the whole clip. I would drop gender
                 and ethnicity for the
 >>>>>>> b228533 (Add documented example runs to the project case studies)
                 <a href="projects/people-counting/index.html">reasons set out here</a>.</p>
@@ -204,12 +203,17 @@
               <h3><a href="projects/fingerprint-reconstruction/index.html">Reconstructing a complete fingerprint
                   from a partial image</a></h3>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <p>A GAN trained on SOCOFing. Average SSIM 0.64 across two runs, which is moderate structural similarity.
                 The discriminator still spots most reconstructions as fake.</p>
 =======
               <p>A GAN trained on SOCOFing. Average SSIM 0.64 across two runs — moderate structural similarity, and
                 the discriminator still spots most reconstructions as fake.</p>
 >>>>>>> 273bc59 (Restore the single featured card and move the new projects into the work index)
+=======
+              <p>A GAN trained on SOCOFing. Average SSIM 0.64 across two runs, which is moderate structural similarity.
+                The discriminator still spots most reconstructions as fake.</p>
+>>>>>>> bba367e (Rephrase and wire up the portrait)
             </div>
             <p class="work-stack">PyTorch · OpenCV</p>
             <p class="work-status"><a class="work-link" href="projects/fingerprint-reconstruction/index.html">Case
@@ -238,8 +242,12 @@
 =======
             <p class="work-year">2024</p>
             <div class="work-body">
+<<<<<<< HEAD
               <h3>Is the house visible? — a paid classification job</h3>
 >>>>>>> badb133 (Present the paid client work and own the demographic detectors in Human Insight AI)
+=======
+              <h3>Sorting property photos for a paying client</h3>
+>>>>>>> bba367e (Rephrase and wire up the portrait)
               <p>A Fiverr client needed property photos sorted into clearly visible and obscured, where obscured
                 means a tree, a parked car or a wall in front of the house. The interesting part was that the
                 client's definition, not a public label set, decided what counted as correct.</p>
@@ -270,10 +278,14 @@
             <p class="work-year">Now</p>
             <div class="work-body">
 <<<<<<< HEAD
+<<<<<<< HEAD
               <h3>Marginalia, retrieval over real documents</h3>
 =======
               <h3>Marginalia — retrieval over real documents</h3>
 >>>>>>> 01054bb (Name the portfolio assistant Marginalia)
+=======
+              <h3>Marginalia, retrieval over real documents</h3>
+>>>>>>> bba367e (Rephrase and wire up the portrait)
               <p>Improving my portfolio assistant with a production-minded RAG pipeline: FastAPI searches structured
                 Markdown knowledge with FAISS and all-MiniLM-L6-v2 embeddings, then uses OpenAI gpt-oss-20b through
                 Groq to generate grounded, useful answers without exposing private credentials.</p>
@@ -508,10 +520,14 @@
   </footer>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   <button id="chat-toggle" class="chat-toggle" type="button" aria-label="Ask Marginalia, open the portfolio assistant"
 =======
   <button id="chat-toggle" class="chat-toggle" type="button" aria-label="Ask Marginalia — open the portfolio assistant"
 >>>>>>> 01054bb (Name the portfolio assistant Marginalia)
+=======
+  <button id="chat-toggle" class="chat-toggle" type="button" aria-label="Ask Marginalia, open the portfolio assistant"
+>>>>>>> bba367e (Rephrase and wire up the portrait)
     aria-controls="chat-window" aria-expanded="false">
     <span class="chat-spark" aria-hidden="true">✦</span>
     <span>Ask Marginalia</span>
@@ -529,10 +545,14 @@
     <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions">
       <div class="message bot-message">
 <<<<<<< HEAD
+<<<<<<< HEAD
         I'm Marginalia, the notes alongside Idris's work. Ask me about any of it: the projects, the numbers, or what he would do differently.
 =======
         I'm Marginalia — notes alongside Idris's work. Ask me about any of it: the projects, the numbers, or what he would do differently.
 >>>>>>> 01054bb (Name the portfolio assistant Marginalia)
+=======
+        I'm Marginalia, the notes alongside Idris's work. Ask me about any of it: the projects, the numbers, or what he would do differently.
+>>>>>>> bba367e (Rephrase and wire up the portrait)
       </div>
     </div>
 

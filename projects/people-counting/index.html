@@ -7,7 +7,7 @@
   <meta name="description"
     content="Human Counting and Ethnicity Detection: a YOLOv8 video pipeline for tracking people and counting crossings, with a critical review of the ethnicity-detection component.">
   <meta name="theme-color" content="#f2efe6">
-  <meta property="og:title" content="Human Counting and Ethnicity Detection — Idris Khattak">
+  <meta property="og:title" content="Human Counting and Ethnicity Detection · Idris Khattak">
   <meta property="og:description"
     content="YOLOv8 tracking and line-crossing counts, plus an ethnicity-detection experiment I recommended against deploying.">
   <meta property="og:type" content="article">
@@ -19,7 +19,7 @@
   <link rel="canonical" href="https://idriskhattak.github.io/Idris_Portfolio/projects/people-counting/">
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2319201c'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Arial' font-weight='700' fill='%23f2efe6'%3EIK%3C/text%3E%3C/svg%3E">
-  <title>Human Counting and Ethnicity Detection — Idris Khattak</title>
+  <title>Human Counting and Ethnicity Detection · Idris Khattak</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -33,7 +33,7 @@
 
   <header class="site-header">
     <nav class="container nav" aria-label="Primary navigation">
-      <a class="brand" href="../../index.html" aria-label="IK — Idris Khattak, home">
+      <a class="brand" href="../../index.html" aria-label="IK, Idris Khattak, home">
         <span class="brand-mark">IK</span>
         <span class="brand-name">Idris Khattak</span>
       </a>
@@ -100,12 +100,12 @@
         </p>
 
         <ol class="step-list">
-          <li><strong>Read the frame</strong> — OpenCV pulls frames and the source width, height and frame rate.</li>
-          <li><strong>Detect and track</strong> — <code>model.track(im0, persist=True)</code>. The
+          <li><strong>Read the frame.</strong> OpenCV pulls frames and the source width, height and frame rate.</li>
+          <li><strong>Detect and track.</strong> <code>model.track(im0, persist=True)</code>. The
             <code>persist</code> flag is what carries IDs between calls; without it every frame starts fresh.</li>
-          <li><strong>Count crossings</strong> — a four-point region spanning the frame, with separate in and out
+          <li><strong>Count crossings.</strong> A four-point region spanning the frame, with separate in and out
             tallies.</li>
-          <li><strong>Write the output</strong> — annotated frames with boxes, IDs and trails written back to a video
+          <li><strong>Write the output.</strong> Annotated frames with boxes, IDs and trails written back to a video
             file.</li>
         </ol>
 
@@ -144,7 +144,7 @@
         </p>
         <p>
           The call runs with <code>enforce_detection=False</code>. That flag exists so the pipeline does not crash
-          when no clear face is found — but it means the classifier returns a confident label regardless. A blurred
+          when no clear face is found, but it means the classifier returns a confident label regardless. A blurred
           face, a back of a head, a person at the edge of the frame: all get a label, all get a confidence score,
           none of it is grounded in a face the model actually resolved.
         </p>
@@ -157,7 +157,7 @@
         </p>
         <p>
           I built it because it was the assignment, and I wrote up why it should not be used. Given the choice now I
-          would propose a different second half — dwell time, queue length, occupancy against a capacity limit — all
+          would propose a different second half: dwell time, queue length, or occupancy against a capacity limit, all
           of which answer the underlying operational question without classifying anybody.
         </p>
 

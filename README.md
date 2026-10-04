@@ -42,6 +42,7 @@ Search for `TODO(Idris)`:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 - Example runs on the AWKUM and people-counting pages
 =======
@@ -69,6 +70,10 @@ Search for `TODO(Idris)`:
 >>>>>>> bf0974d (Add share cards for every page and drop the unreferenced output image)
 =======
 - `portrait.jpg`, `cv.pdf`, and any remaining OG images
+=======
+- Confirm the internship term in the contact section
+- `cv.pdf`
+>>>>>>> bba367e (Rephrase and wire up the portrait)
 
 ## Next improvements
 - Blurred/cropped counting overlay still or GIF (faces must stay off the page)
