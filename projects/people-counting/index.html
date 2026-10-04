@@ -162,15 +162,16 @@
         </p>
 
         <h2>Example runs</h2>
-        <!-- TODO(Idris): the repo has video.mp4 and three stills, but they show identifiable
-             faces. Before putting any of them on a public page: crop to the counting overlay,
-             blur faces, or re-record a clip with people who have agreed to appear. Given the
-             page discusses an ethnicity classifier, showing real faces alongside it is worse than
-             showing nothing. A short GIF of boxes, IDs and the running tally is enough. -->
-        <p class="placeholder-note">
-          To add: a short clip of the counting overlay — boxes, track IDs and the running in/out tally. Faces cropped
-          or blurred.
-        </p>
+        <figure class="project-video">
+          <video controls preload="metadata" playsinline>
+            <source src="combined_video.mp4" type="video/mp4">
+            Your browser does not support this video format.
+            <a href="combined_video.mp4">Download the example video</a>.
+          </video>
+          <figcaption>
+            Example output from the counting pipeline, showing detections, track IDs, and the running in/out tally.
+          </figcaption>
+        </figure>
 
         <h2>What I would do differently</h2>
         <p>

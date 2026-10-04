@@ -706,7 +706,7 @@ h3 {
 .work-item-active {
   margin-inline: -20px;
   padding-inline: 20px;
-  background: rgba(233, 185, 73, 0.12);
+  background: transparent;
 }
 
 .work-item-active .work-status {
@@ -1499,7 +1499,6 @@ footer {
     padding-inline: 10px;
   }
 
-
   .colophon {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -1822,6 +1821,23 @@ footer {
   border-radius: 12px;
   color: var(--ink-soft);
   font-style: italic;
+}
+
+.project-video {
+  margin: 28px 0 0;
+}
+
+.project-video video {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  background: var(--ink);
+}
+
+.project-video figcaption {
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
 }
 
 .project-next {
