@@ -28,7 +28,7 @@ if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
 
-/* Portfolio AI guide */
+/* Marginalia — the portfolio assistant */
 
 const chatToggle = document.getElementById("chat-toggle");
 const chatWindow = document.getElementById("chat-window");
@@ -76,7 +76,7 @@ function openChat(trigger) {
   chatWindow.removeAttribute("inert");
   chatWindow.classList.add("active");
   chatToggle.setAttribute("aria-expanded", "true");
-  chatToggle.setAttribute("aria-label", "Ask Idris AI — close portfolio guide");
+  chatToggle.setAttribute("aria-label", "Ask Marginalia — close the portfolio assistant");
 
   window.setTimeout(() => chatInput.focus(), 180);
 }
@@ -86,7 +86,7 @@ function closeChat({ restoreFocus = true } = {}) {
 
   chatWindow.classList.remove("active");
   chatToggle.setAttribute("aria-expanded", "false");
-  chatToggle.setAttribute("aria-label", "Ask Idris AI — open portfolio guide");
+  chatToggle.setAttribute("aria-label", "Ask Marginalia — open the portfolio assistant");
 
   inertTimer = window.setTimeout(() => chatWindow.setAttribute("inert", ""), 200);
 
@@ -170,6 +170,42 @@ function setChatBusy(isBusy) {
   });
 }
 
+/* One request to the guide. Rejects on transport failure, on an error status,
+   and on a 2xx body that carries no answer — the API returns {"detail": "..."}
+   when generation fails, which must not be shown as if it were a reply. */
+async function requestAnswer(question, timeoutMs) {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetch(CHAT_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        question,
+        session_id: sessionId
+      }),
+      signal: controller.signal
+    });
+
+    const data = await response.json().catch(() => null);
+
+    if (!response.ok) {
+      throw new Error(data?.detail || `The guide returned ${response.status}`);
+    }
+
+    if (!data || typeof data.answer !== "string" || !data.answer.trim()) {
+      throw new Error(data?.detail || "The guide returned no answer");
+    }
+
+    return data.answer;
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
 async function sendQuestion(question) {
   const cleanQuestion = question.trim();
 
@@ -182,40 +218,37 @@ async function sendQuestion(question) {
   const loadingMessage = addMessage("Thinking…", "bot");
   loadingMessage?.classList.add("chat-loading");
 
-  const controller = new AbortController();
-  const timeout = window.setTimeout(() => controller.abort(), 20000);
+  /* The backend sleeps when idle, and the first request after that regularly
+     fails or runs long while the model loads. Tell the visitor what is
+     happening, then retry once before reporting a problem. */
+  const wakingNotice = window.setTimeout(() => {
+    if (loadingMessage?.isConnected) loadingMessage.textContent = "Waking the model up…";
+  }, 4000);
 
   try {
-    const response = await fetch(CHAT_API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        question: cleanQuestion,
-        session_id: sessionId
-      }),
-      signal: controller.signal
-    });
+    let answer;
 
-    if (!response.ok) {
-      throw new Error(`The guide returned ${response.status}`);
+    try {
+      answer = await requestAnswer(cleanQuestion, 30000);
+    } catch (firstError) {
+      console.warn("Marginalia: first attempt failed, retrying.", firstError);
+      answer = await requestAnswer(cleanQuestion, 30000);
     }
 
-    const data = await response.json();
+    window.clearTimeout(wakingNotice);
     loadingMessage?.remove();
-    addMessage(data.answer || "I couldn't find a clear answer to that yet.", "bot");
+    addMessage(answer, "bot");
   } catch (error) {
-    console.error("Portfolio guide error:", error);
+    window.clearTimeout(wakingNotice);
+    console.error("Marginalia error:", error);
     loadingMessage?.remove();
 
     const errorMessage = error.name === "AbortError"
       ? "That took longer than expected. Please try again."
-      : "The AI guide is temporarily unavailable. You can still reach Idris through the contact section.";
+      : "Marginalia is temporarily unavailable. You can still reach Idris through the contact section.";
 
     addMessage(errorMessage, "bot");
   } finally {
-    window.clearTimeout(timeout);
     setChatBusy(false);
     chatInput.focus();
   }

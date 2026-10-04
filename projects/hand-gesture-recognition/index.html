@@ -7,7 +7,7 @@
   <meta name="description"
     content="A real-time hand-sign recognition pipeline using MediaPipe landmarks, a Random Forest classifier, and OpenCV webcam inference.">
   <meta name="theme-color" content="#f2efe6">
-  <meta property="og:title" content="Real-time hand-sign recognition — Idris Khattak">
+  <meta property="og:title" content="Real-time hand-sign recognition · Idris Khattak">
   <meta property="og:description"
     content="MediaPipe hand landmarks and a Random Forest classifier for eight webcam-recognized sign labels.">
   <meta property="og:type" content="article">
@@ -19,7 +19,7 @@
   <link rel="canonical" href="https://idriskhattak.github.io/Idris_Portfolio/projects/hand-gesture-recognition/">
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2319201c'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Arial' font-weight='700' fill='%23f2efe6'%3EIK%3C/text%3E%3C/svg%3E">
-  <title>Real-time hand-sign recognition — Idris Khattak</title>
+  <title>Real-time hand-sign recognition · Idris Khattak</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -33,7 +33,7 @@
 
   <header class="site-header">
     <nav class="container nav" aria-label="Primary navigation">
-      <a class="brand" href="../../index.html" aria-label="IK — Idris Khattak, home">
+      <a class="brand" href="../../index.html" aria-label="IK, Idris Khattak, home">
         <span class="brand-mark">IK</span>
         <span class="brand-name">Idris Khattak</span>
       </a>
@@ -128,6 +128,27 @@
           repository does not report cross-validation, a separate test recording, confusion between similar signs, or
           webcam performance such as FPS and latency.
         </p>
+
+        <h2>Example runs</h2>
+        <p>
+          A live run is the webcam loop in
+          <a href="https://github.com/idriskhattak/Hand-Gesture-Recognition/blob/main/Sign-Language-Detection/inference_classifier.py"
+            target="_blank" rel="noopener noreferrer">inference_classifier.py</a>:
+          OpenCV reads a frame, MediaPipe draws the hand skeleton, the Random Forest predicts a label, and that label
+          is drawn above the hand.
+        </p>
+        <article class="example-run">
+          <p class="example-kicker">What you see on a good frame</p>
+          <ul class="step-list">
+            <li>21 MediaPipe landmarks connected as a hand skeleton</li>
+            <li>A bounding box around the detected hand</li>
+            <li>One of the trained sign labels printed above the box</li>
+          </ul>
+          <p>
+            There is no saved clip or confusion-matrix figure in the repository. The 100% figure above is from the
+            training notebook's held-out split, not from a timed webcam session with measured FPS.
+          </p>
+        </article>
 
         <h2>What went wrong</h2>
         <p>

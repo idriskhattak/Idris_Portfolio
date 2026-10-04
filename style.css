@@ -1824,6 +1824,26 @@ footer {
   font-style: italic;
 }
 
+.example-run {
+  margin: 0 0 28px;
+  padding: 4px 0;
+}
+
+.example-run + .example-run {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.example-kicker {
+  margin: 0 0 12px;
+  color: var(--clay);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .project-next {
   max-width: 68ch;
   margin-top: 80px;
