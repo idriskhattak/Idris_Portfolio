@@ -40,40 +40,8 @@ Share cards are generated from `tools/og-template.html`; see `tools/README.md`.
 ## Content still to fill
 Search for `TODO(Idris)`:
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-- Example runs on the AWKUM and people-counting pages
-=======
->>>>>>> b228533 (Add documented example runs to the project case studies)
-- The 2024–2026 gap in the timeline
->>>>>>> bf0974d (Add share cards for every page and drop the unreferenced output image)
-- Confirm the internship term in the contact section
-<<<<<<< HEAD
-- `cv.pdf`
-
-## Next improvements
-<<<<<<< HEAD
-- Blurred/cropped counting overlay still or GIF (faces must stay off the page)
-- Give Human Insight AI its own case-study page
-- Add a share card for any new project (`tools/og-template.html`)
-- Redeploy Marginalia after knowledge updates
-- Deploy portfolio changes to GitHub Pages
-=======
-- Add figures to the hand gesture case study
-- Give Human Insight AI its own case-study page
-- Add a share card for any new project (`tools/og-template.html`)
-- Add an evaluation set to the university assistant rebuild
-- Re-index the chat assistant's corpus so it covers the project pages
-- Deploy to GitHub Pages, Vercel, or Netlify
->>>>>>> bf0974d (Add share cards for every page and drop the unreferenced output image)
-=======
-- `portrait.jpg`, `cv.pdf`, and any remaining OG images
-=======
 - Confirm the internship term in the contact section
 - `cv.pdf`
->>>>>>> bba367e (Rephrase and wire up the portrait)
 
 ## Next improvements
 - Blurred/cropped counting overlay still or GIF (faces must stay off the page)
@@ -81,4 +49,3 @@ Search for `TODO(Idris)`:
 - Add a share card for any new project (`tools/og-template.html`)
 - Redeploy Marginalia after knowledge updates
 - Deploy portfolio changes to GitHub Pages
->>>>>>> b228533 (Add documented example runs to the project case studies)
