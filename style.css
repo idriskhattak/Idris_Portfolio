@@ -511,6 +511,15 @@ h3 {
   background: var(--paper-light);
 }
 
+.work-section .section-heading {
+  margin-bottom: 56px;
+}
+
+.work-section .section-heading h2 {
+  max-width: 650px;
+  margin-bottom: 0;
+}
+
 .case-study {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
